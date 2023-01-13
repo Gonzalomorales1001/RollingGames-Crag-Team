@@ -1,0 +1,8 @@
+.card-img-overlay{
+    display: none;
+}
+
+.card-img-overlay:hover{
+    display: inline;
+    transition: 0.5s;
+}
