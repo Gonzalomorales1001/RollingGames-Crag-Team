@@ -3,20 +3,19 @@ const spans = new Array(263).fill(null).map(() => document.createElement('span')
 spans.forEach(span => span.classList='block')
 spans.forEach(span => document.querySelector('.container').appendChild(span));
 
-//Ejecutando funciones
+//Get elements
 document.getElementById("btn__login").addEventListener("click", login);
 document.getElementById("btn__signup").addEventListener("click", register);
 window.addEventListener("resize", broadPage);
 
-//Declarando variables
+//Declaring Variabled
 var loginForm = document.querySelector(".form__login");
 var registerForm = document.querySelector(".form__register");
 var registerFormContainer = document.querySelector(".container__login-register");
 var rearBoxLogin = document.querySelector(".forms__rearbox-login");
 var rearBoxRegister = document.querySelector(".forms__rearbox-register");
 
-    //FUNCIONES
-
+//functions
 function broadPage(){
 
     if (window.innerWidth > 850){
@@ -35,7 +34,7 @@ function broadPage(){
 broadPage();
 
 
-    function login(){
+function login(){
         if (window.innerWidth > 850){
             loginForm.style.display = "block";
             registerFormContainer.style.left = "10px";
@@ -51,7 +50,7 @@ broadPage();
         }
     }
 
-    function register(){
+function register(){
         if (window.innerWidth > 850){
             registerForm.style.display = "block";
             registerFormContainer.style.left = "410px";
