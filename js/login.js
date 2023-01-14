@@ -1,5 +1,6 @@
-//creating spans (gonzalo animated background)
+//creating background blocks
 const spans = new Array(263).fill(null).map(() => document.createElement('span'));
+spans.forEach(span => span.classList='block')
 spans.forEach(span => document.querySelector('.container').appendChild(span));
 
 //Ejecutando funciones
