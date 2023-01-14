@@ -17,7 +17,7 @@ body{
 
 .container{
     position: absolute;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -33,15 +33,18 @@ body{
     height: 100%;
     width: 100%;
     background: linear-gradient(black,var(--DewbieViolet),black);
-    animation: Animate 5s linear infinite;
+    animation: Animate 15s linear infinite;
 }
 
 @keyframes Animate{
-    from{
+    0%{
         transform: translateY(-100%);
     }
-    to{
-        transform: translateY((100%));
+    50%{
+        transform: translateY(100vh);
+    }
+    100%{
+        transform: translateY(-100%)
     }
 }
 
@@ -265,9 +268,12 @@ section{
 
 
 @media screen and (max-width: 850px){
-
     .block{
         display: none;
+    }
+
+    .container::before{
+        animation: none;
     }
 
     section{

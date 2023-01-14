@@ -3,6 +3,6 @@
 }
 
 .card-img-overlay:hover{
-    display: inline;
+    display: inline-block;
     transition: 0.5s;
 }

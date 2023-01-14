@@ -1,3 +1,7 @@
+//creating spans (gonzalo animated background)
+const spans = new Array(263).fill(null).map(() => document.createElement('span'));
+spans.forEach(span => document.querySelector('.container').appendChild(span));
+
 //Ejecutando funciones
 document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click", register);
