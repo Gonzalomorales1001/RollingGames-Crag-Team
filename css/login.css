@@ -1,0 +1,301 @@
+:root{
+    --DewbieViolet: #5b00b0;
+    --DewbieVioletTransparency: #5b00b080
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.125rem;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.container::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(black,var(--DewbieViolet),black);
+    animation: Animate 5s linear infinite;
+}
+
+@keyframes Animate{
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY((100%));
+    }
+}
+
+.block{
+    position: relative;
+    display: block;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    background-color: rgb(18,18,18);
+    transition: .5s;
+}
+
+.block:hover{
+    background-color: var(--DewbieViolet);
+    transition: 0s;
+}
+
+
+/* Login */
+
+.login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_box{
+    height: 25rem;
+    width: 21.875rem;
+    background-color: black;
+    z-index: 2;
+    border-radius: 0.625rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9375rem;
+    color: white;
+    display: flex;
+}
+
+.login_box:hover{
+    box-shadow: 0rem 0rem 1.9375rem 0rem var(--DewbieVioletTransparency);
+    -webkit-box-shadow: 0rem 0rem 1.9375rem 0rem var(--DewbieVioletTransparency);
+    -moz-box-shadow: 0rem 0rem 1.9375rem 0rem var(--DewbieVioletTransparency);
+}
+
+.foto{
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 50%;
+    background-image: url(img/LOGO.png);
+    background-size: cover;
+    border: 0.3125rem solid white;
+}
+
+.input_text{
+    height: 1.5625rem;
+}
+
+h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/*Login & Register styles*/
+
+.menu{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section{
+    width: 100%;
+    padding: 1.25rem;
+    margin: auto;
+    margin-top: 12.5rem;
+}
+
+.contenedor__todo{
+    width: 100%;
+    max-width: 50rem;
+    margin: auto;
+    position: relative;
+}
+
+.caja__trasera{
+    width: 100%;
+    padding: 0.625rem 1.25rem;
+    display: flex;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(0.625rem);
+    backdrop-filter: blur(0.625rem);
+    background-color: var(--DewbieVioletTransparency);
+
+}
+
+.caja__trasera div{
+    margin: 6.25rem 2.5rem;
+    color: white;
+    transition: all 500ms;
+}
+
+
+.caja__trasera div p,
+.caja__trasera button{
+    margin-top: 1.875rem;
+}
+
+.caja__trasera div h3{
+    font-weight: 400;
+    font-size: 1.625rem;
+}
+
+.caja__trasera div p{
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.caja__trasera button{
+    padding: 0.625rem 2.5rem;
+    border: 0.125rem solid #fff;
+    font-size: 0.875rem;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+}
+
+.caja__trasera button:hover{
+    background: #fff;
+    color: var(--DewbieViolet);
+}
+
+/*Formularios*/
+
+.contenedor__login-register{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 23.75rem;
+    position: relative;
+    top: -11.5625rem;
+    left: 0.625rem;
+
+    /*La transicion va despues del codigo JS*/
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+
+.contenedor__login-register form{
+    width: 100%;
+    padding: 5rem 1.25rem;
+    background: white;
+    position: absolute;
+    border-radius: 1.25rem;
+}
+
+.contenedor__login-register form h2{
+    font-size: 1.875rem;
+    text-align: center;
+    margin-bottom: 1.25rem;
+    color: var(--DewbieViolet);
+}
+
+.contenedor__login-register form input{
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.625rem;
+    border: none;
+    background: #F2F2F2;
+    font-size: 1rem;
+    outline: none;
+}
+
+.contenedor__login-register form button{
+    padding: 0.625rem 2.5rem;
+    margin-top: 2.5rem;
+    border: none;
+    font-size: 0.875rem;
+    background: var(--DewbieViolet);
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
+
+
+
+
+.formulario__login{
+    opacity: 1;
+    display: block;
+}
+.formulario__register{
+    display: none;
+}
+
+.modal{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: #00000080;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__container{
+    width: 800px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 100px;
+}
+
+
+
+@media screen and (max-width: 850px){
+
+    .block{
+        display: none;
+    }
+
+    section{
+        margin-top: 3.125rem;
+    }
+
+    .caja__trasera{
+        max-width: 21.875rem;
+        height: 18.75rem;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .caja__trasera div{
+        margin: 0rem;
+        position: absolute;
+    }
+
+
+    /*Formularios*/
+
+    .contenedor__login-register{
+        top: -0.625rem;
+        left: -0.3125rem;
+        margin: auto;
+    }
+
+    .contenedor__login-register form{
+        position: relative;
+    }
+}
