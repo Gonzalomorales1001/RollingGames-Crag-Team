@@ -3,66 +3,66 @@ const spans = new Array(263).fill(null).map(() => document.createElement('span')
 spans.forEach(span => document.querySelector('.container').appendChild(span));
 
 //Ejecutando funciones
-document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
-document.getElementById("btn__registrarse").addEventListener("click", register);
-window.addEventListener("resize", anchoPage);
+document.getElementById("btn__login").addEventListener("click", login);
+document.getElementById("btn__signup").addEventListener("click", register);
+window.addEventListener("resize", broadPage);
 
 //Declarando variables
-var formulario_login = document.querySelector(".formulario__login");
-var formulario_register = document.querySelector(".formulario__register");
-var contenedor_login_register = document.querySelector(".contenedor__login-register");
-var caja_trasera_login = document.querySelector(".caja__trasera-login");
-var caja_trasera_register = document.querySelector(".caja__trasera-register");
+var loginForm = document.querySelector(".form__login");
+var registerForm = document.querySelector(".form__register");
+var registerFormContainer = document.querySelector(".container__login-register");
+var rearBoxLogin = document.querySelector(".forms__rearbox-login");
+var rearBoxRegister = document.querySelector(".forms__rearbox-register");
 
     //FUNCIONES
 
-function anchoPage(){
+function broadPage(){
 
     if (window.innerWidth > 850){
-        caja_trasera_register.style.display = "block";
-        caja_trasera_login.style.display = "block";
+        rearBoxRegister.style.display = "block";
+        rearBoxLogin.style.display = "block";
     }else{
-        caja_trasera_register.style.display = "block";
-        caja_trasera_register.style.opacity = "1";
-        caja_trasera_login.style.display = "none";
-        formulario_login.style.display = "block";
-        contenedor_login_register.style.left = "0px";
-        formulario_register.style.display = "none";   
+        rearBoxRegister.style.display = "block";
+        rearBoxRegister.style.opacity = "1";
+        rearBoxLogin.style.display = "none";
+        loginForm.style.display = "block";
+        registerFormContainer.style.left = "0px";
+        registerForm.style.display = "none";   
     }
 }
 
-anchoPage();
+broadPage();
 
 
-    function iniciarSesion(){
+    function login(){
         if (window.innerWidth > 850){
-            formulario_login.style.display = "block";
-            contenedor_login_register.style.left = "10px";
-            formulario_register.style.display = "none";
-            caja_trasera_register.style.opacity = "1";
-            caja_trasera_login.style.opacity = "0";
+            loginForm.style.display = "block";
+            registerFormContainer.style.left = "10px";
+            registerForm.style.display = "none";
+            rearBoxRegister.style.opacity = "1";
+            rearBoxLogin.style.opacity = "0";
         }else{
-            formulario_login.style.display = "block";
-            contenedor_login_register.style.left = "0px";
-            formulario_register.style.display = "none";
-            caja_trasera_register.style.display = "block";
-            caja_trasera_login.style.display = "none";
+            loginForm.style.display = "block";
+            registerFormContainer.style.left = "0px";
+            registerForm.style.display = "none";
+            rearBoxRegister.style.display = "block";
+            rearBoxLogin.style.display = "none";
         }
     }
 
     function register(){
         if (window.innerWidth > 850){
-            formulario_register.style.display = "block";
-            contenedor_login_register.style.left = "410px";
-            formulario_login.style.display = "none";
-            caja_trasera_register.style.opacity = "0";
-            caja_trasera_login.style.opacity = "1";
+            registerForm.style.display = "block";
+            registerFormContainer.style.left = "410px";
+            loginForm.style.display = "none";
+            rearBoxRegister.style.opacity = "0";
+            rearBoxLogin.style.opacity = "1";
         }else{
-            formulario_register.style.display = "block";
-            contenedor_login_register.style.left = "0px";
-            formulario_login.style.display = "none";
-            caja_trasera_register.style.display = "none";
-            caja_trasera_login.style.display = "block";
-            caja_trasera_login.style.opacity = "1";
+            registerForm.style.display = "block";
+            registerFormContainer.style.left = "0px";
+            loginForm.style.display = "none";
+            rearBoxRegister.style.display = "none";
+            rearBoxLogin.style.display = "block";
+            rearBoxLogin.style.opacity = "1";
         }
 }
