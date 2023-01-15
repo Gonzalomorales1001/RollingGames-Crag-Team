@@ -101,13 +101,13 @@ const admin = new user('admin','cragteam','admin@admin.com',true)
 const defaultUser=new user('user','1234','user@gmail.com')
 
 const saveUsers=()=>localStorage.setItem('users',JSON.stringify(users))
-const saveRequests=()=>localStorage.setItem('requests',JSON.stringify(requests))
+const saveQueue=()=>localStorage.setItem('queue',JSON.stringify(queue))
 
 let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
 saveUsers()
 
-let requests=JSON.parse(localStorage.getItem('requests'))||[]
-saveRequests()
+let queue=JSON.parse(localStorage.getItem('queue'))||[]
+saveQueue()
 
 let findUser=''
 
@@ -168,8 +168,8 @@ let confirmPassword=document.querySelector('#confirm-password')
 let userExist=false
 let usedEmail=false
 
-let RequestExist=false
-let RequestUsedEmail=false
+let queueUserExist=false
+let queueUsedEmail=false
 
 const signUp=(event)=>{
     event.preventDefault()
@@ -182,17 +182,17 @@ const signUp=(event)=>{
     userExist=users.find(user=>user.username==registerUsernameValue)
     usedEmail=users.find(user=>user.email==registerEmailValue)
 
-    RequestExist=requests.find(request=>request.username==registerUsernameValue)
-    RequestUsedEmail=requests.find(request=>request.email==registerEmailValue)
+    queueUserExist=queue.find(queue=>queue.username==registerUsernameValue)
+    queueUsedEmail=queue.find(queue=>queue.email==registerEmailValue)
 
 
-    if(!userExist&&!RequestExist){
-        if(!usedEmail&&!RequestUsedEmail){
+    if(!userExist&&!queueUserExist){
+        if(!usedEmail&&!queueUsedEmail){
             if(registerPasswordValue.length>=7){
                 if(registerPasswordValue===confirmPasswordValue){
                     let newUser=new user(registerUsernameValue,registerPasswordValue,registerEmailValue)
-                    requests.push(newUser)
-                    saveRequests()
+                    queue.push(newUser)
+                    saveQueue()
         
                     registerUsername.value=''
                     registerEmail.value=''
