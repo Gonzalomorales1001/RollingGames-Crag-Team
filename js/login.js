@@ -8,7 +8,7 @@ document.getElementById("btn__login").addEventListener("click", login);
 document.getElementById("btn__signup").addEventListener("click", register);
 window.addEventListener("resize", broadPage);
 
-//Declaring Variabled
+//Declaring Variables
 var loginForm = document.querySelector(".form__login");
 var registerForm = document.querySelector(".form__register");
 var registerFormContainer = document.querySelector(".container__login-register");
@@ -65,4 +65,17 @@ function register(){
             rearBoxLogin.style.display = "block";
             rearBoxLogin.style.opacity = "1";
         }
+}
+
+//Modal
+let modal=document.querySelector('#modal')
+
+const forgotModal=(event)=>{
+    event.preventDefault()
+    modal.style.display='flex'
+}
+
+const closeModal=(event)=>{
+    event.preventDefault()
+    modal.style.display='none'
 }
