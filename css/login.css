@@ -2,6 +2,7 @@
     --DewbieViolet: #5b00b0;
     --DewbieVioletTransparency: #5b00b080;
     --DewbieVioletDark: #250047;
+    --TransparentWhite: rgb(255,255,255,0.7);
 }
 
 *{
@@ -146,6 +147,14 @@ section{
     color: var(--DewbieViolet);
 }
 
+.go-home a{
+    color: #fff;
+    position: absolute;
+}
+.go-home a:visited{color: #fff;}
+.go-home:first-child{left: 10px;}
+.go-home:nth-child(2){right: 10px;}
+
 /*Forms*/
 
 .container__login-register{
@@ -154,7 +163,6 @@ section{
     position: relative;
     top: -11.5625rem;
     left: 0.625rem;
-
     /*La transicion va despues del codigo JS*/
     transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
@@ -162,7 +170,7 @@ section{
 .container__login-register form{
     width: 100%;
     padding: 5rem 1.25rem;
-    background: white;
+    background: #fff;
     position: absolute;
     border-radius: 1.25rem;
 }
@@ -179,9 +187,10 @@ section{
     margin: 1.25rem 0rem;
     padding: 0.625rem;
     border: none;
-    background: #F2F2F2;
+    background: transparent;
     font-size: 1rem;
     outline: none;
+    color:var(--DewbieVioletDark)
 }
 
 .container__login-register form input:focus{border-bottom: 3px solid var(--DewbieViolet);}
@@ -237,7 +246,7 @@ section{
     margin: 20px;
     min-width: 400px;
     color: var(--DewbieVioletDark);
-    background-color: rgb(255,255,255,0.7);
+    background-color: var(--TransparentWhite);
     position: relative;
     padding: 30px;
     border-radius: 10px;
