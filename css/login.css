@@ -1,6 +1,6 @@
 :root{
     --DewbieViolet: #5b00b0;
-    --DewbieVioletTransparency: #5b00b080;
+    --DewbieVioletTransparency: rgba(91, 0, 176,0.3);
     --DewbieVioletDark: #250047;
     --TransparentWhite: rgb(255,255,255,0.7);
 }
@@ -219,6 +219,12 @@ section{
     display: block;
 }
 .form__register{
+    display: none;
+}
+
+.input--error{
+    color: red;
+    position: absolute;
     display: none;
 }
 

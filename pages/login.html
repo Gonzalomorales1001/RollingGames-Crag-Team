@@ -38,10 +38,12 @@
                         <!--Forms-->
                         <div class="container__login-register flex-center">
                             <!--Login-->
-                            <form action="" class="form__login">
+                            <form action="" class="form__login" onsubmit="logIn(event)">
                                 <h2>Log in</h2>
-                                <input type="text" placeholder="Username">
-                                <input type="password" placeholder="Password">
+                                <small class="input--error" id="UserNotFound">This user doesn't exist</small>
+                                <input type="text" placeholder="Username" id="login-username" required>
+                                <small class="input--error" id="IncorrectPassword">Incorrect Password</small>
+                                <input type="password" placeholder="Password" id="login-password" required>
                                 <button>Log In</button>
                                 <p style="margin-top:2rem">
                                     <a href="" id="openModal" onclick="forgotModal(event)" >Forgot password? Click here.</a>
@@ -49,12 +51,16 @@
                             </form>
         
                             <!--Register-->
-                            <form action="" class="form__register">
+                            <form action="" class="form__register" onsubmit="signUp(event)">
                                 <h2>Sign Up</h2>
-                                <input type="text" placeholder="Username">
-                                <input type="text" placeholder="E-mail">
-                                <input type="password" placeholder="Password">
-                                <input type="password" placeholder="Confirm Password">
+                                <small class="input--error" id="UserAlreadyExist">This user already exist</small>
+                                <input type="text" placeholder="Username" id="register-username" required>
+                                <small class="input--error" id="EmailInUse">That email is already in use</small>
+                                <input type="email" placeholder="E-mail" id="register-email" required>
+                                <small class="input--error" id="PasswordMinLength">Password must be at least 7 characters</small>
+                                <input type="password" placeholder="Password" id="register-password" required>
+                                <small class="input--error" id="MismatchPasswords">Passwords doesn't match</small>
+                                <input type="password" placeholder="Confirm Password" id="confirm-password" required>
                                 <button>Register</button>
                             </form>
                         </div>
