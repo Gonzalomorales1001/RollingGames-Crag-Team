@@ -193,7 +193,7 @@ section{
     color:var(--DewbieVioletDark)
 }
 
-.container__login-register form input:focus{border-bottom: 3px solid var(--DewbieViolet);}
+.container__login-register form input:focus, #forgot-password-input{border-bottom: 3px solid var(--DewbieViolet);}
 
 .container__login-register form button{
     padding: 0.625rem 2.5rem;
@@ -227,6 +227,7 @@ section{
     position: absolute;
     display: none;
 }
+.input--error-relative{position:relative}
 
 /*Modal*/
 

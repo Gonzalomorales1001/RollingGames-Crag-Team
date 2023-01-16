@@ -46,7 +46,7 @@
                                 <input type="password" placeholder="Password" id="login-password" required>
                                 <button>Log In</button>
                                 <p style="margin-top:2rem">
-                                    <a href="" id="openModal" onclick="forgotModal(event)" >Forgot password? Click here.</a>
+                                    <a href="" id="openModal" onclick="forgotPasswordModal(event)" >Forgot password? Click here.</a>
                                 </p>
                             </form>
         
@@ -74,10 +74,11 @@
                         <img src="/assets/img/locked.png" alt="locked" width="100px" height="100px">
                         <h3>Forgot your password?</h3>
                         <p>Reset your password</p>
-                        <form action="" class="">
-                            <input type="email" name="forgot-password" id="forgot-input" placeholder="Email" required>
+                        <form action="" class="" onsubmit="sendChangePasswordRequest(event)">
+                            <small class="input--error" id="EmailNotFound">This email was not found</small>
+                            <small class="input--error" id="EmailAlreadyRequested">This email has already requested a password change</small>
+                            <input type="email" name="forgot-password" id="forgot-password-input" placeholder="Email" required>
                             <button class="modal__button">Send</button>
-                            <p id="email-sent" style="display:none; position: absolute;">We sent you an email!</p>
                             <button class="modal__button" onclick="closeModal(event)">Cancel</button>
                         </form>
                     </div>
