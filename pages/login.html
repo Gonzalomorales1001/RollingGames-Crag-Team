@@ -73,11 +73,11 @@
                     <div class="modal__content flex-center">
                         <img src="/assets/img/locked.png" alt="locked" width="100px" height="100px">
                         <h3>Forgot your password?</h3>
-                        <p>Reset your password</p>
+                        <p>Request a change!</p>
                         <form action="" class="" onsubmit="sendChangePasswordRequest(event)">
-                            <small class="input--error" id="EmailNotFound">This email was not found</small>
-                            <small class="input--error" id="EmailAlreadyRequested">This email has already requested a password change</small>
-                            <input type="email" name="forgot-password" id="forgot-password-input" placeholder="Email" required>
+                            <small class="input--error" id="EmailNotFound">This user was not found</small>
+                            <small class="input--error" id="EmailAlreadyRequested">This user has already requested a change</small>
+                            <input type="text" name="forgot-password" id="forgot-password-input" placeholder="Username or email" required>
                             <button class="modal__button">Send</button>
                             <button class="modal__button" onclick="closeModal(event)">Cancel</button>
                         </form>

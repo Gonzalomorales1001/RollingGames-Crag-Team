@@ -98,19 +98,19 @@ const admin = new user('admin','cragteam','admin@admin.com',true)
 const defaultUser=new user('user','1234','user@gmail.com')
 
 //functions to save data in local storage
-const saveUsers=()=>localStorage.setItem('users',JSON.stringify(users))
-const saveQueue=()=>localStorage.setItem('queue',JSON.stringify(queue))
-const saveRequests=()=>localStorage.setItem('passwordsChangeRequest',JSON.stringify(passwordsChangeRequest))
+const saveUsersInLS=()=>localStorage.setItem('users',JSON.stringify(users))
+const saveQueueInLS=()=>localStorage.setItem('queue',JSON.stringify(queue))
+const saveRequestsInLS=()=>localStorage.setItem('passwordsChangeRequest',JSON.stringify(passwordsChangeRequest))
 
 //users registered
 let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
-saveUsers()
+saveUsersInLS()
 //users that require admin approval
 let queue=JSON.parse(localStorage.getItem('queue'))||[]
-saveQueue()
+saveQueueInLS()
 //users who sent password change request
 let passwordsChangeRequest=JSON.parse(localStorage.getItem('passwordsChangeRequest'))||[]
-saveRequests()
+saveRequestsInLS()
 
 
 //this variable finds an existing user
@@ -177,7 +177,7 @@ const signUp=(event)=>{
                 if(registerPasswordValue===confirmPasswordValue){
                     let newUser=new user(registerUsernameValue,registerPasswordValue,registerEmailValue)
                     queue.push(newUser)
-                    saveQueue()
+                    saveQueueInLS()
         
                     registerUsername.value=''
                     registerEmail.value=''
@@ -237,13 +237,19 @@ const sendChangePasswordRequest=(event)=>{
     usedEmail=users.find(user=>user.email==forgotPasswordValue)
     queueUsedEmail=queue.find(queue=>queue.email==forgotPasswordValue)
 
-    let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request==forgotPasswordValue)
+    userExist=users.find(user=>user.username==forgotPasswordValue)
+    queueUserExist=queue.find(queue=>queue.username==forgotPasswordValue)
+    
+    let requestSent=
+    users.find(user=>user.username==forgotPasswordValue||user.email==forgotPasswordValue)||
+    queue.find(UserInQueue=>UserInQueue.username==forgotPasswordValue||UserInQueue.email==forgotPasswordValue)
 
-    if(usedEmail||queueUsedEmail){
+    let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request==requestSent)
+
+    if(usedEmail||queueUsedEmail||userExist||queueUserExist){
         if(!passwordChangeRequestAlreadySent){
-            let requestSent=forgotPasswordValue
             passwordsChangeRequest.push(requestSent)
-            saveRequests()
+            saveRequestsInLS()
             alert('Change password request sent successfully!')
             closeModal(event)
             forgotPassword.value=''
@@ -253,6 +259,11 @@ const sendChangePasswordRequest=(event)=>{
     }else{
         document.querySelector('#EmailNotFound').style.display='block'
     }
+
+    usedEmail=false
+    queueUsedEmail=false
+    userExist=false
+    queueUserExist=false
 }
 
 //clear errors
