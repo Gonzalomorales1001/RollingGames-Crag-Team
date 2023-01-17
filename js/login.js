@@ -3,31 +3,35 @@ const spans = new Array(263).fill(null).map(() => document.createElement('span')
 spans.forEach(span => span.classList='block')
 spans.forEach(span => document.querySelector('.container').appendChild(span));
 
-//Get elements
-document.getElementById("btn__login").addEventListener("click", displayLogin);
-document.getElementById("btn__signup").addEventListener("click", displayRegister);
-window.addEventListener("resize", broadPage);
+//get events
+let btnLogin=document.querySelector('#btn__login')
+let btnSignup=document.querySelector('#btn__signup')
+btnLogin.addEventListener("click", displayLogin)
+btnSignup?btnSignup.addEventListener("click", displayRegister):
+window.addEventListener("resize", broadPage)
 
 //Declaring Variables
-var loginForm = document.querySelector(".form__login");
-var registerForm = document.querySelector(".form__register");
-var registerFormContainer = document.querySelector(".container__login-register");
-var rearBoxLogin = document.querySelector(".forms__rearbox-login");
-var rearBoxRegister = document.querySelector(".forms__rearbox-register");
+let loginForm = document.querySelector(".form__login")
+let registerForm = document.querySelector(".form__register")
+let formsContainer = document.querySelector(".container__login-register")
+let rearBoxLogin = document.querySelector(".forms__rearbox-login")
+let rearBoxRegister = document.querySelector(".forms__rearbox-register")
+
+
 
 //functions
 function broadPage(){
 
     if (window.innerWidth > 850){
-        rearBoxRegister.style.display = "block";
-        rearBoxLogin.style.display = "block";
+        rearBoxRegister.style.display = "block"
+        rearBoxLogin.style.display = "block"
     }else{
-        rearBoxRegister.style.display = "block";
-        rearBoxRegister.style.opacity = "1";
-        rearBoxLogin.style.display = "none";
-        loginForm.style.display = "block";
-        registerFormContainer.style.left = "0px";
-        registerForm.style.display = "none";   
+        rearBoxRegister.style.display = "block"
+        rearBoxRegister.style.opacity = "1"
+        rearBoxLogin.style.display = "none"
+        loginForm.style.display = "block"
+        formsContainer.style.left = "0px"
+        registerForm.style.display = "none" 
     }
 }
 
@@ -36,35 +40,35 @@ broadPage();
 
 function displayLogin(){
         if (window.innerWidth > 850){
-            loginForm.style.display = "block";
-            registerFormContainer.style.left = "10px";
-            registerForm.style.display = "none";
-            rearBoxRegister.style.opacity = "1";
-            rearBoxLogin.style.opacity = "0";
+            loginForm.style.display = "block"
+            formsContainer.style.left = "10px"
+            registerForm.style.display = "none"
+            rearBoxRegister.style.opacity = "1"
+            rearBoxLogin.style.opacity = "0"
         }else{
-            loginForm.style.display = "block";
-            registerFormContainer.style.left = "0px";
-            registerForm.style.display = "none";
-            rearBoxRegister.style.display = "block";
-            rearBoxLogin.style.display = "none";
+            loginForm.style.display = "block"
+            formsContainer.style.left = "0px"
+            registerForm.style.display = "none"
+            rearBoxRegister.style.display = "block"
+            rearBoxLogin.style.display = "none"
         }
         clear()
     }
 
 function displayRegister(){
         if (window.innerWidth > 850){
-            registerForm.style.display = "block";
-            registerFormContainer.style.left = "410px";
-            loginForm.style.display = "none";
-            rearBoxRegister.style.opacity = "0";
-            rearBoxLogin.style.opacity = "1";
+            registerForm.style.display = "block"
+            formsContainer.style.left = "410px"
+            loginForm.style.display = "none"
+            rearBoxRegister.style.opacity = "0"
+            rearBoxLogin.style.opacity = "1"
         }else{
-            registerForm.style.display = "block";
-            registerFormContainer.style.left = "0px";
-            loginForm.style.display = "none";
-            rearBoxRegister.style.display = "none";
-            rearBoxLogin.style.display = "block";
-            rearBoxLogin.style.opacity = "1";
+            registerForm.style.display = "block"
+            formsContainer.style.left = "0px"
+            loginForm.style.display = "none"
+            rearBoxRegister.style.display = "none"
+            rearBoxLogin.style.display = "block"
+            rearBoxLogin.style.opacity = "1"
         }
         clear()
 }
