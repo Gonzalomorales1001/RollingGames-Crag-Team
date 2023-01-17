@@ -240,9 +240,7 @@ const sendChangePasswordRequest=(event)=>{
     userExist=users.find(user=>user.username==forgotPasswordValue)
     queueUserExist=queue.find(queue=>queue.username==forgotPasswordValue)
     
-    let requestSent=
-    users.find(user=>user.username==forgotPasswordValue||user.email==forgotPasswordValue)||
-    queue.find(UserInQueue=>UserInQueue.username==forgotPasswordValue||UserInQueue.email==forgotPasswordValue)
+    let requestSent=users.find(user=>user.username==forgotPasswordValue||user.email==forgotPasswordValue)||queue.find(UserInQueue=>UserInQueue.username==forgotPasswordValue||UserInQueue.email==forgotPasswordValue)
 
     let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request==requestSent)
 
