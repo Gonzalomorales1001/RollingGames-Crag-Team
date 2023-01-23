@@ -64,47 +64,42 @@
                       </tr>
                     </thead>
                     <tbody id="game-table__body">
-                      <tr>
+                      <!-- <tr>
                         <th scope="row">Froggy</th>
                         <td class="text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel enim aspernatur est rem ullam, veniam eligendi modi voluptatibus iure possimus quae error, quis magnam hic quaerat exercitationem nesciunt placeat illum, qui facere et obcaecati officia porro accusamus! Ad ea natus numquam enim dignissimos cum veritatis dolore veniam, atque placeat eos odit magni nesciunt maxime nihil laborum. Inventore quibusdam magni quis.</td>
                         <td>CSS, Javascript</td>
                         <td class="text-center fs-3"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#editGameModal"></i></td>
                         <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill"></i></td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
             </div>
         </section>
         <section class="col-12 col-lg-6 p-3">
             <div class="panel panel-transparency">
-                <form action="" class="gap-3 d-flex flex-column">
+                <form action="" onsubmit="addNewGame(event)" class="gap-3 d-flex flex-column">
                     <h2>Add a new game</h2>
-                    <input type="text" name="name" id="name-game" class="form-control" placeholder="Name">
-                    <input type="text" name="url" id="url-game" class="form-control" placeholder="Game URL">
-                    <textarea name="game-description" id="description-game" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
-                    <div class="d-flex">
-                      <div class="dropdown d-inline me-2">
-                        <button class="btn btn-dewbieviolet dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Select Category
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">HTML</a></li>
-                          <li><a class="dropdown-item" href="#">CSS</a></li>
-                          <li><a class="dropdown-item" href="#">Javascript</a></li>
-                          <li><a class="dropdown-item" href="#">Java</a></li>
-                          <li><a class="dropdown-item" href="#">C</a></li>
-                          <li><a class="dropdown-item" href="#">C++</a></li>
-                          <li><a class="dropdown-item" href="#">C#</a></li>
-                          <li><a class="dropdown-item" href="#">Python</a></li>
-                          <li><a class="dropdown-item" href="#">SQL</a></li>
-                          <li><a class="dropdown-item" href="#">Assembly</a></li>
-                          <li><a class="dropdown-item" href="#">Kotlin</a></li>
-                          <li><a class="dropdown-item" href="#">Frameworks</a></li>
-                          <li><a class="dropdown-item" href="#">Other...</a></li>
-                        </ul>
-                      </div>
-                      <input type="text" name="imageURL" id="imageURL-game" class="form-control d-inline-block" placeholder="URL Image">
-                    </div class="">
+                    <input type="text" name="name" id="game-name" class="form-control" placeholder="Name">
+                    <input type="text" name="url" id="game-url" class="form-control" placeholder="Game URL">
+                    <textarea name="game-description" id="game-description" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
+                    <div class="d-block d-lg-flex">
+                      <select class="form-select btn btn-dewbieviolet d-inline mb-3 mb-lg-0 me-lg-2" id="game-category" aria-label="Default select example">
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Java">Java</option>
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="Python">Python</option>
+                        <option value="SQL">SQL</option>
+                        <option value="Assembly">Assembly</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="Framework">Frameworks</option>
+                        <option value="Others" selected>Other...</option>
+                      </select>
+                      <input type="text" name="imageURL" id="game-imageURL" class="form-control d-inline-block" placeholder="URL Image">
+                    </div>
                     <button class="btn btn-dewbieviolet d-grid d-lg-inline-block"><i class="bi bi-plus-lg"></i> Add</button>
                 </form>
             </div>
@@ -139,22 +134,6 @@
                               <tr>
                             </tbody>
                           </table>
-                        <!-- <div class="menu-header d-flex align-items-center">
-                            <h4 class="flex-grow-1">Username</h4>
-                            <h4 class="flex-grow-1 d-none d-md-block">Email</h4>
-                            <h5 class="mx-3">Admin</h5>
-                            <h5 class="mx-3">Delete</h5>
-                        </div> -->
-                        <!-- <ul>
-                            <li class="d-flex align-items-center ">
-                                <p class="flex-grow-1">Example</p>
-                                <p class="flex-grow-1 d-none d-md-block">example@example.com</p>
-                                <div class="fs-2">
-                                        <i id="admin-set" class="mx-1 bi bi-square" alt="mx-1 bi bi-check-square-fill"></i>
-                                        <i class="text-danger mx-1 bi bi-trash-fill"></i>
-                                </div>
-                            </li>
-                        </ul> -->
                     </main>
                 </article>
                 <article class="queue">
@@ -180,31 +159,12 @@
                               </tr>
                             </tbody>
                           </table>
-                        <!-- <div class="menu-header d-flex align-items-center">
-                            <h4 class="flex-grow-1">Username</h4>
-                            <h4 class="flex-grow-1 d-none d-md-block">Email</h4>
-                            <h5 class="mx-3">Accept</h5>
-                            <h5 class="mx-3">Delete</h5>
-                        </div> -->
-                        <!-- <ul>
-                            <li class="d-flex align-items-center">
-                                <p class="flex-grow-1">Example</p>
-                                <p class="flex-grow-1 d-none d-md-block">example@example.com</p>
-                                <div class="fs-2">
-                                        <i class="text-success mx-1 bi bi-check-lg"></i>
-                                        <i class="text-danger mx-1 bi bi-x-lg"></i>
-                                </div>
-                            </li>
-                        </ul> -->
                     </main>
                 </article>
             </div>
         </section>
         <!-- <section class="user-panel">
             <article class="passwords-request">
-                <header>
-                    <h2>Passwords Change Requests</h2>
-                </header>
             </article>
         </section> -->
     </main>
@@ -235,44 +195,41 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" class="gap-3 d-flex flex-column">
-              <h2>Add a new game!</h2>
-              <input type="text" name="name" id="name-game" class="form-control" placeholder="Name">
-              <input type="text" name="url" id="url-game" class="form-control" placeholder="Game URL">
-              <textarea name="game-description" id="description-game" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
-              <div class="d-flex">
-                <div class="dropdown dropup-center d-inline me-2">
-                  <button class="btn btn-dewbieviolet dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Select Category
-                  </button>
-                  <ul class="dropdown-menu position-absolute">
-                    <li><a class="dropdown-item" href="#">HTML</a></li>
-                    <li><a class="dropdown-item" href="#">CSS</a></li>
-                    <li><a class="dropdown-item" href="#">Javascript</a></li>
-                    <li><a class="dropdown-item" href="#">Java</a></li>
-                    <li><a class="dropdown-item" href="#">C</a></li>
-                    <li><a class="dropdown-item" href="#">C++</a></li>
-                    <li><a class="dropdown-item" href="#">C#</a></li>
-                    <li><a class="dropdown-item" href="#">Python</a></li>
-                    <li><a class="dropdown-item" href="#">SQL</a></li>
-                    <li><a class="dropdown-item" href="#">Frameworks</a></li>
-                    <li><a class="dropdown-item" href="#">Other...</a></li>
-                  </ul>
-                </div>
-                <input type="text" name="imageURL" id="imageURL-game" class="form-control d-inline-block" placeholder="URL Image">
-              </div class="">
-              <button class="btn btn-dewbieviolet d-grid d-lg-inline-block"><i class="bi bi-plus-lg"></i> Add</button>
+            <form action="" onsubmit="editGame(event)" class="gap-3 d-flex flex-column">
+              <h2>Add a new game</h2>
+              <input type="text" name="name" id="game-name__edit-modal" class="form-control" placeholder="Name">
+              <input type="text" name="url" id="game-url__edit-modal" class="form-control" placeholder="Game URL">
+              <textarea name="game-description" id="game-description__edit-modal" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
+              <div class="d-block d-lg-flex">
+                <select class="form-select btn btn-dewbieviolet d-inline mb-3 mb-lg-0 me-lg-2" id="game-category__edit-modal" aria-label="Default select example">
+                  <option value="HTML">HTML</option>
+                  <option value="CSS">CSS</option>
+                  <option value="JavaScript">JavaScript</option>
+                  <option value="Java">Java</option>
+                  <option value="C">C</option>
+                  <option value="C++">C++</option>
+                  <option value="C#">C#</option>
+                  <option value="Python">Python</option>
+                  <option value="SQL">SQL</option>
+                  <option value="Assembly">Assembly</option>
+                  <option value="Kotlin">Kotlin</option>
+                  <option value="Framework">Frameworks</option>
+                  <option value="Others" selected>Other...</option>
+                </select>
+                <input type="text" name="imageURL" id="game-imageURL__edit-modal" class="form-control d-inline-block" placeholder="URL Image">
+              </div>
           </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-dewbieviolet">Save changes</button>
+            <button type="button" class="btn btn-dewbieviolet" onclick="editGame(event)">Save changes</button>
           </div>
         </div>
       </div>
     </div>
-    <script src="/app.js"></script>
-    <script src="https://kit.fontawesome.com/8cfaa6df50.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="/app.js"></script>
+    <script src="/js/admin.js"></script>
+    <script src="https://kit.fontawesome.com/8cfaa6df50.js" crossorigin="anonymous"></script>
 </body>
 </html>
