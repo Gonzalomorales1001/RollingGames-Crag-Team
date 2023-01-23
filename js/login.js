@@ -83,35 +83,76 @@ let registerUsername=document.querySelector('#register-username')
 let registerEmail=document.querySelector('#register-email')
 let registerPassword=document.querySelector('#register-password')
 let confirmPassword=document.querySelector('#confirm-password')
+//modal input
+let forgotPassword=document.querySelector('#forgot-password-input')
 
 class user{
-    constructor(username,password,email,admin=false){
+    constructor(username,password,email,id,admin=false){
         this.username=username
         this.password=password
         this.email=email
+        this.id=id
         this.admin=admin
     }
 }
 
 //default users
-const admin = new user('admin','cragteam','admin@admin.com',true)
-const defaultUser=new user('user','1234','user@gmail.com')
+const admin = new user('admin','cragteam','admin@admin.com',1,true)
+const defaultUser=new user('user','1234','user@gmail.com',2)
+
+
+//users registered
+let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
+localStorage.setItem('users',JSON.stringify(users))
+//users that require admin approval
+let queue=JSON.parse(localStorage.getItem('queue'))||[]
+localStorage.setItem('queue',JSON.stringify(queue))
+//users who sent password change request
+let passwordsChangeRequest=JSON.parse(localStorage.getItem('passwordsChangeRequest'))||[]
+localStorage.setItem('passwordsChangeRequest',JSON.stringify(passwordsChangeRequest))
 
 //functions to save data in local storage
 const saveUsersInLS=()=>localStorage.setItem('users',JSON.stringify(users))
 const saveQueueInLS=()=>localStorage.setItem('queue',JSON.stringify(queue))
 const saveRequestsInLS=()=>localStorage.setItem('passwordsChangeRequest',JSON.stringify(passwordsChangeRequest))
 
-//users registered
-let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
-saveUsersInLS()
-//users that require admin approval
-let queue=JSON.parse(localStorage.getItem('queue'))||[]
-saveQueueInLS()
-//users who sent password change request
-let passwordsChangeRequest=JSON.parse(localStorage.getItem('passwordsChangeRequest'))||[]
-saveRequestsInLS()
+//clear errors
+//login
+username.addEventListener('focus',clear)
+password.addEventListener('focus',clear)
+//register
+registerUsername.addEventListener('focus',clear)
+registerEmail.addEventListener('focus',clear)
+registerPassword.addEventListener('focus',clear)
+confirmPassword.addEventListener('focus',clear)
+//modal
+forgotPassword.addEventListener('focus',clear)
+//function
+function clear() {
+    //login inputs
+    document.querySelector('#UserNotFound').style.display='none'
+    username.style.outline='none'
 
+    document.querySelector('#IncorrectPassword').style.display='none'
+    password.style.outline='none'
+    //register inputs
+    document.querySelector('#UserAlreadyExist').style.display='none'
+    registerUsername.style.outline='none'
+
+    document.querySelector('#EmailInUse').style.display='none'
+    registerEmail.style.outline='none'
+
+    document.querySelector('#PasswordMinLength').style.display='none'
+    registerPassword.style.outline='none'
+
+    document.querySelector('#MismatchPasswords').style.display='none'
+    confirmPassword.style.outline='none'
+    //modal input
+    document.querySelector('#EmailNotFound').style.display='none'
+    document.querySelector('#EmailAlreadyRequested').style.display='none'
+}
+
+let modal=document.querySelector('#modal')
 
 //this variable finds an existing user
 let findUser=''
@@ -155,7 +196,7 @@ let usedEmail=false
 let queueUserExist=false
 let queueUsedEmail=false
 
-//register func
+//register users func
 const signUp=(event)=>{
     event.preventDefault()
 
@@ -175,7 +216,7 @@ const signUp=(event)=>{
         if(!usedEmail&&!queueUsedEmail){
             if(registerPasswordValue.length>=7){
                 if(registerPasswordValue===confirmPasswordValue){
-                    let newUser=new user(registerUsernameValue,registerPasswordValue,registerEmailValue)
+                    let newUser=new user(registerUsernameValue,registerPasswordValue,registerEmailValue,new Date().getTime())
                     queue.push(newUser)
                     saveQueueInLS()
         
@@ -209,14 +250,9 @@ const signUp=(event)=>{
     queueUsedEmail=false
 }
 
+//modal functions
 
-//Modal
-let modal=document.querySelector('#modal')
-
-// let openModalButton=document.querySelector('#openModal')
-// openModalButton.addEventListener('click',forgotPasswordModal)
-
-const forgotPasswordModal=(event)=>{
+const openModal=(event)=>{
     event.preventDefault()
     modal.style.display='flex'
 }
@@ -227,8 +263,6 @@ const closeModal=(event)=>{
     forgotPassword.value=''
     clear()
 }
-
-let forgotPassword=document.querySelector('#forgot-password-input')
 
 const sendChangePasswordRequest=(event)=>{
     event.preventDefault()
@@ -241,8 +275,7 @@ const sendChangePasswordRequest=(event)=>{
     queueUserExist=queue.find(queue=>queue.username==forgotPasswordValue)
     
     let requestSent=users.find(user=>user.username==forgotPasswordValue||user.email==forgotPasswordValue)||queue.find(UserInQueue=>UserInQueue.username==forgotPasswordValue||UserInQueue.email==forgotPasswordValue)
-
-    let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request==requestSent)
+    let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request.id==requestSent.id)
 
     if(usedEmail||queueUsedEmail||userExist||queueUserExist){
         if(!passwordChangeRequestAlreadySent){
@@ -262,40 +295,4 @@ const sendChangePasswordRequest=(event)=>{
     queueUsedEmail=false
     userExist=false
     queueUserExist=false
-}
-
-//clear errors
-//login
-username.addEventListener('focus',clear)
-password.addEventListener('focus',clear)
-//register
-registerUsername.addEventListener('focus',clear)
-registerEmail.addEventListener('focus',clear)
-registerPassword.addEventListener('focus',clear)
-confirmPassword.addEventListener('focus',clear)
-//modal
-forgotPassword.addEventListener('focus',clear)
-//function
-function clear() {
-    //login inputs
-    document.querySelector('#UserNotFound').style.display='none'
-    username.style.outline='none'
-
-    document.querySelector('#IncorrectPassword').style.display='none'
-    password.style.outline='none'
-    //register inputs
-    document.querySelector('#UserAlreadyExist').style.display='none'
-    registerUsername.style.outline='none'
-
-    document.querySelector('#EmailInUse').style.display='none'
-    registerEmail.style.outline='none'
-
-    document.querySelector('#PasswordMinLength').style.display='none'
-    registerPassword.style.outline='none'
-
-    document.querySelector('#MismatchPasswords').style.display='none'
-    confirmPassword.style.outline='none'
-    //modal input
-    document.querySelector('#EmailNotFound').style.display='none'
-    document.querySelector('#EmailAlreadyRequested').style.display='none'
 }
