@@ -2,9 +2,9 @@
     margin: 0;
     padding: 0;
 }
+
 .wrapper{
-    min-height: 100vh;
-    background-color: #00112c;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
