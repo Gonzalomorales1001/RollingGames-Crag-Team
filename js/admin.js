@@ -2,7 +2,6 @@ const editGameModal = new bootstrap.Modal(document.getElementById('editGameModal
 
 let tableBody=document.querySelector('#game-table__body')
 
-
 const loadTable=()=>{
   tableBody.innerHTML=''
 
@@ -104,13 +103,3 @@ const editGame=(event)=>{
 }
 
 loadTable()
-
-//references
-
-// {/* <tr>
-// <th scope="row">Froggy</th>
-// <td class="text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel enim aspernatur est rem ullam, veniam eligendi modi voluptatibus iure possimus quae error, quis magnam hic quaerat exercitationem nesciunt placeat illum, qui facere et obcaecati officia porro accusamus! Ad ea natus numquam enim dignissimos cum veritatis dolore veniam, atque placeat eos odit magni nesciunt maxime nihil laborum. Inventore quibusdam magni quis.</td>
-// <td>CSS, Javascript</td>
-// <td class="text-center fs-3"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#editGameModal"></i></td>
-// <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill"></i></td>
-// </tr> */}
