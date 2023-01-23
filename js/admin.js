@@ -29,6 +29,7 @@ const deleteGame=(id)=>{
   let confirmDelete=confirm(`Are you sure to want to delete ${findGame.title} from Dewbie?`)
 
   confirmDelete?games.splice(indexgame,1):
+  localStorage.removeItem('games')
   saveGamesInLS()
   loadTable()
 }
