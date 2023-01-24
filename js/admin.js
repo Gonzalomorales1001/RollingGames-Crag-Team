@@ -1,9 +1,23 @@
+let session=JSON.parse(localStorage.getItem('session'))
+let mainTag=document.querySelector('#main')
+
+if(!session.admin){
+  let accessDenied=`
+  <div class="vh-100">
+  <div class="alert alert-danger mx-4" role="alert" id="access-denied">
+  You do not have permission to access this page
+  </div>
+  </div>
+  `
+  mainTag.innerHTML=accessDenied
+}
+
 const editGameModal = new bootstrap.Modal(document.getElementById('editGameModal'))
 
-let tableBody=document.querySelector('#game-table__body')
+let gameTableBody=document.querySelector('#game-table__body')
 
 const loadTable=()=>{
-  tableBody.innerHTML=''
+  gameTableBody.innerHTML=''
 
   games.forEach(game=>{
     let tr=document.createElement('tr')
@@ -16,7 +30,7 @@ const loadTable=()=>{
     <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill" onclick="deleteGame(${game.id})"></i></td>
     `
     tr.innerHTML=content
-    tableBody.appendChild(tr)
+    gameTableBody.appendChild(tr)
   })
 }
 
@@ -69,6 +83,8 @@ const showEditGameModal=(id)=>{
   editGameModal.show()
   gameData=games.find(game=>game.id==id)
 
+  let imgPreview=document.querySelector('#modal-img-preview')
+
   let nameInput=document.querySelector('#game-name__edit-modal')
   let urlInput=document.querySelector('#game-url__edit-modal')
   let descInput=document.querySelector('#game-description__edit-modal')
@@ -80,6 +96,13 @@ const showEditGameModal=(id)=>{
   categorySelect.value=gameData.category
   urlImageInput.value=gameData.img
   urlInput.value=gameData.url
+
+  imgPreview.src=gameData.img
+}
+
+const onChangeImgPreview=()=>{
+  let imgPreview=document.querySelector('#modal-img-preview')
+  imgPreview.src=gameData.img
 }
 
 const editGame=(event)=>{
@@ -103,4 +126,115 @@ const editGame=(event)=>{
   editGameModal.hide()
 }
 
-loadTable()
+
+//user admins
+
+let userTableBody=document.querySelector('#user-table__body')
+let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
+
+const saveUsersInLS=()=>localStorage.setItem('users',JSON.stringify(users))
+
+const loadUserTable=()=>{
+  userTableBody.innerHTML=''
+  
+  users.forEach(user=>{
+    let tr=document.createElement('tr')
+
+    let content=`
+    <th scope="row">${user.username}</th>
+    <td>${user.email}</td>
+    <td class="text-center fs-4">
+        <div class="form-check form-switch d-flex justify-content-center align-items-center">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" ${user.admin?'checked':''} ${user.id==0?'disabled':''} onclick="setAdmin(${user.id})">
+        </div>
+    </td>
+    <td class="text-center fs-3">${user.id==0?'':`<i class="text-danger bi bi-trash-fill" onclick="deleteUser(${user.id})"></i>`}</td>
+    `
+
+    tr.innerHTML=content
+    userTableBody.appendChild(tr)
+  })
+
+}
+
+const setAdmin=(id)=>{
+  let userFound=users.find(user=>user.id==id)
+  let userFoundIndex=users.findIndex(user=>user.id==id)
+  userFound.admin= !userFound.admin
+  users[userFoundIndex]=userFound
+
+  saveUsersInLS()
+  loadUserTable()
+}
+
+const deleteUser=(id)=>{
+  let userFound=users.find(user=>user.id==id)
+  let userFoundIndex=users.findIndex(user=>user.id==id)
+
+  let confirmDelete=confirm(`Are you sure to want to delete ${userFound.username} from users?`)
+
+  confirmDelete?users.splice(userFoundIndex,1):
+  localStorage.removeItem('users')
+  saveUsersInLS()
+  loadUserTable()
+}
+
+//queue
+
+let queueTableBody=document.querySelector('#queue-table__body')
+let queue=JSON.parse(localStorage.getItem('queue'))||[]
+
+const saveQueueInLS=()=>localStorage.setItem('queue',JSON.stringify(queue))
+
+const loadQueueTable=()=>{
+  queueTableBody.innerHTML=''
+
+  queue.forEach(user=>{
+    let tr=document.createElement('tr')
+
+    let content=`
+    <th class="vertical-align-center" scope="row">${user.username}</th>
+    <td class="vertical-align-center">${user.email}</td>
+    <td class="text-center fs-3"><i class="text-success mx-1 bi bi-check-lg" onclick="acceptUser(${user.id})"></i></td>
+    <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-x-lg" onclick="rejectUser(${user.id})"></i></td>
+  `
+
+  tr.innerHTML=content
+  queueTableBody.appendChild(tr)
+  })
+}
+
+const rejectUser=(id)=>{
+  let userInQueueFound=queue.find(user=>user.id==id)
+  let userInQueueFoundIndex=queue.findIndex(user=>user.id==id)
+
+  let deleteConfirm=confirm(`Are you sure you want to reject the registration request of: ${userInQueueFound.username}?`)
+  deleteConfirm?queue.splice(userInQueueFoundIndex,1):
+
+  saveQueueInLS()
+  loadQueueTable()
+}
+
+const acceptUser=(id)=>{
+  let userInQueueFound=queue.find(user=>user.id==id)
+  let userInQueueFoundIndex=queue.findIndex(user=>user.id==id)
+
+  let accept=confirm(`Add ${userInQueueFound.username}?`)
+  if(accept){
+    users.push(userInQueueFound)
+    loadUserTable()
+    saveUsersInLS()
+
+    queue.splice(userInQueueFoundIndex,1)
+    loadQueueTable()
+    saveQueueInLS()
+
+  }
+}
+
+if(session.admin){
+  document.querySelector('#access-denied').style.display='none'
+  loadTable()
+  loadUserTable()
+  loadQueueTable()
+}
