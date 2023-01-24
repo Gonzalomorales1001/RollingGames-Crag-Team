@@ -16,7 +16,7 @@ const initialData=[
         'FlexBox Froggy',
         'a game where you help Froggy and friends by writing CSS code!',
         'CSS',
-        'https://www.google.com.ar/url?sa=i&url=https%3A%2F%2Fwww.giantbomb.com%2Fflexbox-froggy%2F3030-84034&psig=AOvVaw38pCx8MWGi43y_BHh18u5V&ust=1674568008035000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIDYkY7q3fwCFQAAAAAdAAAAABAD',
+        'https://spillbart.com/wp-content/uploads/2021/02/css-flexbox-froggy.png',
         'https://flexboxfroggy.com/'
         ),
     new game(
@@ -24,7 +24,7 @@ const initialData=[
         'JSRobot',
         'Learn JavaScript by playing a platform game: Control a robot to collect coins, avoid obstacles and reach the flag at the end of the level.',
         'JavaScript',
-        'https://www.google.com.ar/url?sa=i&url=https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fjsrobot&psig=AOvVaw0m2zK6CIFiUpEiegFYli8Q&ust=1674569971525000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJCl_7bx3fwCFQAAAAAdAAAAABAD',
+        'https://i.blogs.es/ee8e7a/jsrobot-2017-11-28-17-46-11/450_1000.png',
         'https://lab.reaal.me/jsrobot/',
     ),
     new game(
@@ -64,7 +64,7 @@ const initialData=[
         'CSS Dinner!',
         `No worries, you've got this! You're about to learn CSS Selectors! Selectors are how you pick which element to apply styles to.`,
         'CSS',
-        'https://www.google.com.ar/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fflukeout%2Fcss-diner%2Fissues%2F93&psig=AOvVaw0x5R73Gucfizqq7MtQ9cAt&ust=1674589099893000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKiY3dm43vwCFQAAAAAdAAAAABAI',
+        'https://i.ytimg.com/vi/BaT22bWcGwU/maxresdefault.jpg',
         'https://flukeout.github.io/',
     ),
 ]

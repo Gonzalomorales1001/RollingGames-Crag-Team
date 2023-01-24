@@ -49,7 +49,11 @@
             </div>
           </nav>
     </header>
-    <main class="row flex-row-reverse w-100 g-2" id="main">
+    <main class="" id="main">
+      <div class="alert alert-danger mx-4" role="alert" id="access-denied">
+        You do not have permission to access this page
+      </div>
+      <div class="row flex-row-reverse w-100 g-2">
         <section class="col-12 panel">
             <div class="m-2">
                 <h2>Games List</h2>
@@ -65,8 +69,8 @@
                     </thead>
                     <tbody id="game-table__body">
                       <!-- <tr>
-                        <th scope="row">Froggy</th>
-                        <td class="text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel enim aspernatur est rem ullam, veniam eligendi modi voluptatibus iure possimus quae error, quis magnam hic quaerat exercitationem nesciunt placeat illum, qui facere et obcaecati officia porro accusamus! Ad ea natus numquam enim dignissimos cum veritatis dolore veniam, atque placeat eos odit magni nesciunt maxime nihil laborum. Inventore quibusdam magni quis.</td>
+                        <th scope="row">Example</th>
+                        <td class="text-justify">(Example desc) Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, perferendis.</td>
                         <td>CSS, Javascript</td>
                         <td class="text-center fs-3"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#editGameModal"></i></td>
                         <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill"></i></td>
@@ -79,7 +83,7 @@
             <div class="panel panel-transparency">
                 <form action="" onsubmit="addNewGame(event)" class="gap-3 d-flex flex-column">
                     <h2>Add a new game</h2>
-                    <input type="text" name="name" id="game-name" class="form-control" placeholder="Name">
+                    <input type="text" name="name" id="game-name" class="form-control" placeholder="Title">
                     <input type="text" name="url" id="game-url" class="form-control" placeholder="Game URL">
                     <textarea name="game-description" id="game-description" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
                     <div class="d-block d-lg-flex">
@@ -120,8 +124,8 @@
                                 <th class="text-center" scope="col">Delete</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
+                            <tbody id="user-table__body">
+                              <!-- <tr>
                                 <th scope="row">Example</th>
                                 <td>example@example.com</td>
                                 <td class="text-center fs-4">
@@ -130,8 +134,7 @@
                                     </div>
                                 </td>
                                 <td class="text-center fs-3"><i class="text-danger bi bi-trash-fill"></i></td>
-                              </tr>
-                              <tr>
+                              </tr> -->
                             </tbody>
                           </table>
                     </main>
@@ -150,13 +153,13 @@
                                 <th class="text-center" scope="col">Reject</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
+                            <tbody id="queue-table__body">
+                              <!-- <tr>
                                 <th class="vertical-align-center" scope="row">Example</th>
                                 <td class="vertical-align-center">example@example.com</td>
                                 <td class="text-center fs-3"><i class="text-success mx-1 bi bi-check-lg"></i></td>
                                 <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-x-lg"></i></td>
-                              </tr>
+                              </tr> -->
                             </tbody>
                           </table>
                     </main>
@@ -167,6 +170,7 @@
             <article class="passwords-request">
             </article>
         </section> -->
+      </div>
     </main>
     <footer class="pt-5">
         <h4>Check our social networks!</h4>
@@ -195,28 +199,40 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <div class="preview">
+              <small>Preview</small>
+              <img id="modal-img-preview" src="" alt="preview">
+            </div>
             <form action="" onsubmit="editGame(event)" class="gap-3 d-flex flex-column">
-              <h2>Add a new game</h2>
+              <label for="name">Title</label>
               <input type="text" name="name" id="game-name__edit-modal" class="form-control" placeholder="Name">
+              <label for="url">URL Game</label>
               <input type="text" name="url" id="game-url__edit-modal" class="form-control" placeholder="Game URL">
+              <label for="game-description">Description</label>
               <textarea name="game-description" id="game-description__edit-modal" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
               <div class="d-block d-lg-flex">
-                <select class="form-select btn btn-dewbieviolet d-inline mb-3 mb-lg-0 me-lg-2" id="game-category__edit-modal" aria-label="Default select example">
-                  <option value="HTML">HTML</option>
-                  <option value="CSS">CSS</option>
-                  <option value="JavaScript">JavaScript</option>
-                  <option value="Java">Java</option>
-                  <option value="C">C</option>
-                  <option value="C++">C++</option>
-                  <option value="C#">C#</option>
-                  <option value="Python">Python</option>
-                  <option value="SQL">SQL</option>
-                  <option value="Assembly">Assembly</option>
-                  <option value="Kotlin">Kotlin</option>
-                  <option value="Framework">Frameworks</option>
-                  <option value="Others" selected>Other...</option>
-                </select>
-                <input type="text" name="imageURL" id="game-imageURL__edit-modal" class="form-control d-inline-block" placeholder="URL Image">
+                <div class="mb-3 mb-lg-0 me-lg-2">
+                  <label for="select-category">Select Category</label>
+                  <select name="select-category" class="form-select btn btn-dewbieviolet" id="game-category__edit-modal" aria-label="Default select example">
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Java">Java</option>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="Python">Python</option>
+                    <option value="SQL">SQL</option>
+                    <option value="Assembly">Assembly</option>
+                    <option value="Kotlin">Kotlin</option>
+                    <option value="Framework">Frameworks</option>
+                    <option value="Others" selected>Other...</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="imageURL">Image URL</label>
+                  <input type="text" name="imageURL" id="game-imageURL__edit-modal" class="form-control d-inline-block" placeholder="URL Image" onchange="onChangeImgPreview()">
+                </div>
               </div>
           </form>
           </div>

@@ -97,8 +97,8 @@ class user{
 }
 
 //default users
-const admin = new user('admin','cragteam','admin@admin.com',1,true)
-const defaultUser=new user('user','1234','user@gmail.com',2)
+const admin = new user('admin','cragteam','cragteam@gmail.com',0,true)
+const defaultUser=new user('user','1234','user@gmail.com',1)
 
 
 //users registered
@@ -167,7 +167,7 @@ const logIn=(event)=>{
 
     if(findUser){
         if(usernameValue===findUser.username&&passwordValue===findUser.password){
-            localStorage.setItem('sesion',JSON.stringify(findUser))
+            localStorage.setItem('session',JSON.stringify(findUser))
             username.value=''
             password.value=''
             clear()
