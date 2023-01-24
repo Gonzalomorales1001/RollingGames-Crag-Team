@@ -141,8 +141,8 @@ const loadUserTable=()=>{
     let tr=document.createElement('tr')
 
     let content=`
-    <th scope="row">${user.username}</th>
-    <td>${user.email}</td>
+    <th scope="row" ${user.id==0?'class="text-danger-emphasis"':''}>${user.username}</th>
+    <td ${user.id==0?'class="text-danger-emphasis"':''}>${user.email}</td>
     <td class="text-center fs-4">
         <div class="form-check form-switch d-flex justify-content-center align-items-center">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" ${user.admin?'checked':''} ${user.id==0?'disabled':''} onclick="setAdmin(${user.id})">
@@ -159,7 +159,9 @@ const loadUserTable=()=>{
 
 const setAdmin=(id)=>{
   let userFound=users.find(user=>user.id==id)
+  if(userFound.id==0){return alert('Access Denied')}
   let userFoundIndex=users.findIndex(user=>user.id==id)
+
   userFound.admin= !userFound.admin
   users[userFoundIndex]=userFound
 
@@ -170,6 +172,7 @@ const setAdmin=(id)=>{
 
 const deleteUser=(id)=>{
   let userFound=users.find(user=>user.id==id)
+  if(userFound.id==0){return alert('Access Denied')}
   let userFoundIndex=users.findIndex(user=>user.id==id)
 
   let confirmDelete=confirm(`Are you sure to want to delete ${userFound.username} from users?`)
