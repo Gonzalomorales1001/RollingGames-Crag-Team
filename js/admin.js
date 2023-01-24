@@ -163,6 +163,7 @@ const setAdmin=(id)=>{
   userFound.admin= !userFound.admin
   users[userFoundIndex]=userFound
 
+  localStorage.setItem('session',JSON.stringify(userFound))
   saveUsersInLS()
   loadUserTable()
 }
@@ -173,10 +174,16 @@ const deleteUser=(id)=>{
 
   let confirmDelete=confirm(`Are you sure to want to delete ${userFound.username} from users?`)
 
-  confirmDelete?users.splice(userFoundIndex,1):
-  localStorage.removeItem('users')
-  saveUsersInLS()
-  loadUserTable()
+  if(confirmDelete){
+    users.splice(userFoundIndex,1)
+    localStorage.removeItem('users')
+    saveUsersInLS()
+
+    let session=JSON.parse(localStorage.getItem('session'))
+    session=[]
+    localStorage.setItem('session',JSON.stringify(session))
+    loadUserTable()
+  }
 }
 
 //queue
