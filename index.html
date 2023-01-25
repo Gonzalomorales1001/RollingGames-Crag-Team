@@ -38,14 +38,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ol class="navbar-nav ms-auto gap-4">
-            <li class="nav-item d-none">
-              <a href="/pages/admin.html" class="nav-link text-danger-emphasis">Admin</a>
+            <li class="nav-item d-none" id="admin-nav-item">
+              <a href="/pages/admin.html" class="nav-link text-danger-emphasis">Administration</a>
             </li>
             <li class="nav-item">
               <a href="/pages/contact.html" class="nav-link">Contact</a>
             </li>
             <li class="nav-item user-log text-center">
-              <a class="nav-link" href="/pages/login.html" id="user-log">Log in</a>
+              <a class="nav-link" href="/pages/login.html" id="user-log" onclick="logOut()">Log in</a>
             </li>
           </ol>
         </div>

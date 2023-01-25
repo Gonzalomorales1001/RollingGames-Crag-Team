@@ -1,4 +1,3 @@
-let session=JSON.parse(localStorage.getItem('session'))||[]
 let mainTag=document.querySelector('#main')
 
 if(!session.admin){

@@ -74,3 +74,23 @@ let games=JSON.parse(localStorage.getItem('games'))||initialData
 localStorage.setItem('games',JSON.stringify(games))
 
 let featuredGame=JSON.parse(localStorage.getItem('featured'))||initialData[3]
+
+let session=JSON.parse(localStorage.getItem('session'))||[]
+
+//admin navbar button
+let admNavBtn=document.querySelector('#admin-nav-item')
+
+if(session.admin){
+    admNavBtn.classList='nav-item'
+}else{
+    admNavBtn.classList='nav-item d-none'
+}
+
+//login button
+let loginBtnText=document.querySelector('#user-log')
+
+if(session.username){loginBtnText.innerHTML=session.username}
+
+const logOut=()=>localStorage.removeItem('session')
+
+//
