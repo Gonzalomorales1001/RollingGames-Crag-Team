@@ -1,4 +1,4 @@
-let session=JSON.parse(localStorage.getItem('session'))
+let session=JSON.parse(localStorage.getItem('session'))||[]
 let mainTag=document.querySelector('#main')
 
 if(!session.admin){
@@ -24,8 +24,8 @@ const loadTable=()=>{
 
     let content=`
     <th scope="row">${game.title}</th>
-    <td class="text-justify">${game.description}</td>
-    <td>${game.category}</td>
+    <td class="text-justify d-none d-md-table-cell">${game.description}</td>
+    <td class="d-none d-md-table-cell">${game.category}</td>
     <td class="text-center fs-3"><i class="bi bi-pencil-square" onclick="showEditGameModal(${game.id})"></i></td>
     <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill" onclick="deleteGame(${game.id})"></i></td>
     `
@@ -130,7 +130,7 @@ const editGame=(event)=>{
 //user admins
 
 let userTableBody=document.querySelector('#user-table__body')
-let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
+let users=JSON.parse(localStorage.getItem('users'))
 
 const saveUsersInLS=()=>localStorage.setItem('users',JSON.stringify(users))
 
@@ -142,7 +142,7 @@ const loadUserTable=()=>{
 
     let content=`
     <th scope="row" ${user.id==0?'class="text-danger-emphasis"':''}>${user.username}</th>
-    <td ${user.id==0?'class="text-danger-emphasis"':''}>${user.email}</td>
+    <td class="d-none d-md-table-cell ${user.id==0?'text-danger-emphasis':''}">${user.email}</td>
     <td class="text-center fs-4">
         <div class="form-check form-switch d-flex justify-content-center align-items-center">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" ${user.admin?'checked':''} ${user.id==0?'disabled':''} onclick="setAdmin(${user.id})">
@@ -204,7 +204,7 @@ const loadQueueTable=()=>{
 
     let content=`
     <th class="vertical-align-center" scope="row">${user.username}</th>
-    <td class="vertical-align-center">${user.email}</td>
+    <td class="vertical-align-center d-none d-md-table-cell">${user.email}</td>
     <td class="text-center fs-3"><i class="text-success mx-1 bi bi-check-lg" onclick="acceptUser(${user.id})"></i></td>
     <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-x-lg" onclick="rejectUser(${user.id})"></i></td>
   `
