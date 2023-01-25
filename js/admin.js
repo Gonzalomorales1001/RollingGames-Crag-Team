@@ -221,6 +221,7 @@ const rejectUser=(id)=>{
   let deleteConfirm=confirm(`Are you sure you want to reject the registration request of: ${userInQueueFound.username}?`)
   deleteConfirm?queue.splice(userInQueueFoundIndex,1):
 
+  localStorage.removeItem('queue')
   saveQueueInLS()
   loadQueueTable()
 }
