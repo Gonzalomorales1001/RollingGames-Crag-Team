@@ -14,6 +14,7 @@ if(!session.admin){
 
 const editGameModal = new bootstrap.Modal(document.getElementById('editGameModal'))
 
+//games table
 let gameTableBody=document.querySelector('#game-table__body')
 
 const loadTable=()=>{
@@ -124,6 +125,25 @@ const editGame=(event)=>{
   saveGamesInLS()
   loadTable()
   editGameModal.hide()
+}
+
+//select featured
+let featuredSelect=document.querySelector('#featured-select')
+
+const loadFeatureOptions=()=>{
+  
+  games.forEach(game=>{
+    let option=document.createElement('option')
+    let title=game.title
+    if(title==featuredGame.title){option.setAttribute('selected','')}
+    option.innerHTML=title
+    featuredSelect.appendChild(option)
+  })
+}
+
+const selectFeatured=()=>{
+  featuredGame=games.find(game=>game.title==featuredSelect.value)
+  localStorage.setItem('featured',JSON.stringify(featuredGame))
 }
 
 
@@ -244,7 +264,7 @@ const acceptUser=(id)=>{
 }
 
 if(session.admin){
-  document.querySelector('#access-denied').style.display='none'
+  loadFeatureOptions()
   loadTable()
   loadUserTable()
   loadQueueTable()

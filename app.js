@@ -73,4 +73,4 @@ let games=JSON.parse(localStorage.getItem('games'))||initialData
 
 localStorage.setItem('games',JSON.stringify(games))
 
-//new Date().getTime()
+let featuredGame=JSON.parse(localStorage.getItem('featured'))||initialData[3]
