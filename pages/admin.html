@@ -41,8 +41,8 @@
                   <li class="nav-item">
                     <a href="/pages/contact.html" class="nav-link">Contact</a>
                   </li>
-                  <li class="nav-item user-log text-center">
-                    <a class="nav-link" href="/pages/login.html" id="user-log" onclick="logOut()">Log in</a>
+                  <li class="nav-item dropdown user-log text-center" id="user-log">
+                    <a class="nav-link" href="/pages/login.html">Log in</a>
                   </li>
                 </ol>
               </div>
@@ -57,9 +57,11 @@
                 <table class="table table-dark table-striped-columns" id="game-table">
                     <thead>
                       <tr>
+                        <th scope="col" class="d-none d-md-table-cell text-center">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col" class="d-none d-md-table-cell">Description</th>
-                        <th scope="col" class="d-none d-md-table-cell">Category</th>
+                        <th scope="col" class="d-none d-lg-table-cell">Category</th>
+                        <th scope="col" class="text-center">Published</th>
                         <th class="text-center" scope="col">Edit</th>
                         <th class="text-center" scope="col">Delete</th>
                       </tr>
@@ -86,11 +88,12 @@
             <div class="panel panel-transparency">
                 <form action="" onsubmit="addNewGame(event)" class="gap-3 d-flex flex-column">
                     <h2>Add a new game</h2>
-                    <input type="text" name="name" id="game-name" class="form-control" placeholder="Title">
-                    <input type="text" name="url" id="game-url" class="form-control" placeholder="Game URL">
-                    <textarea name="game-description" id="game-description" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
+                    <input type="text" name="name" id="game-name" class="form-control" placeholder="Title" required>
+                    <input type="text" name="url" id="game-url" class="form-control" placeholder="Game URL" required>
+                    <input type="text" name="video" id="video-url" class="form-control" placeholder="Video URL" required>
+                    <textarea name="game-description" id="game-description" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;" required></textarea>
                     <div class="d-block d-lg-flex">
-                      <select class="form-select btn btn-dewbieviolet d-inline mb-3 mb-lg-0 me-lg-2" id="game-category" aria-label="Default select example">
+                      <select class="form-select btn btn-dewbieviolet d-inline mb-3 mb-lg-0 me-lg-2" id="game-category" aria-label="Default select example" required>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
                         <option value="JavaScript">JavaScript</option>
@@ -105,7 +108,7 @@
                         <option value="Framework">Frameworks</option>
                         <option value="Others" selected>Other...</option>
                       </select>
-                      <input type="text" name="imageURL" id="game-imageURL" class="form-control d-inline-block" placeholder="URL Image">
+                      <input type="text" name="imageURL" id="game-imageURL" class="form-control d-inline-block" placeholder="URL Image" required>
                     </div>
                     <button class="btn btn-dewbieviolet d-grid d-lg-inline-block"><i class="bi bi-plus-lg"></i> Add</button>
                 </form>
@@ -208,15 +211,17 @@
             </div>
             <form action="" onsubmit="editGame(event)" class="gap-3 d-flex flex-column">
               <label for="name">Title</label>
-              <input type="text" name="name" id="game-name__edit-modal" class="form-control" placeholder="Name">
+              <input type="text" name="name" id="game-name__edit-modal" class="form-control" placeholder="Name" required>
               <label for="url">URL Game</label>
-              <input type="text" name="url" id="game-url__edit-modal" class="form-control" placeholder="Game URL">
+              <input type="text" name="url" id="game-url__edit-modal" class="form-control" placeholder="Game URL" required>
+              <label for="video">URL Video</label>
+              <input type="text" name="video" id="video-url__edit-modal" class="form-control" placeholder="Video URL" required>
               <label for="game-description">Description</label>
-              <textarea name="game-description" id="game-description__edit-modal" class="form-control" placeholder="Description" cols="30" rows="10" style="resize:none;"></textarea>
+              <textarea name="game-description" id="game-description__edit-modal" class="form-control" placeholder="Description" required cols="30" rows="10" style="resize:none;"></textarea>
               <div class="d-block d-lg-flex">
                 <div class="mb-3 mb-lg-0 me-lg-2">
                   <label for="select-category">Select Category</label>
-                  <select name="select-category" class="form-select btn btn-dewbieviolet" id="game-category__edit-modal" aria-label="Default select example">
+                  <select name="select-category" class="form-select btn btn-dewbieviolet" id="game-category__edit-modal" aria-label="Default select example" required>
                     <option value="HTML">HTML</option>
                     <option value="CSS">CSS</option>
                     <option value="JavaScript">JavaScript</option>
@@ -234,7 +239,7 @@
                 </div>
                 <div>
                   <label for="imageURL">Image URL</label>
-                  <input type="text" name="imageURL" id="game-imageURL__edit-modal" class="form-control d-inline-block" placeholder="URL Image" onchange="onChangeImgPreview()">
+                  <input type="text" name="imageURL" id="game-imageURL__edit-modal" class="form-control d-inline-block" placeholder="URL Image" required onchange="onChangeImgPreview()">
                 </div>
               </div>
           </form>

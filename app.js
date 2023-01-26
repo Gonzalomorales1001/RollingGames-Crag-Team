@@ -1,11 +1,13 @@
 class game{
-    constructor(id,title,description,category,img,url,favorite=false){
+    constructor(id,title,description,category,img,url,video,published=false,favorite=false){
         this.id=id
         this.title=title
         this.description=description
         this.category=category
         this.img=img
         this.url=url
+        this.video=video
+        this.published=published
         this.favorite=favorite
     }
 }
@@ -17,7 +19,9 @@ const initialData=[
         'a game where you help Froggy and friends by writing CSS code!',
         'CSS',
         'https://spillbart.com/wp-content/uploads/2021/02/css-flexbox-froggy.png',
-        'https://flexboxfroggy.com/'
+        'https://flexboxfroggy.com/',
+        `https://youtu.be/5cbfEYT1FG4`,
+        true,
         ),
     new game(
         1,
@@ -26,6 +30,8 @@ const initialData=[
         'JavaScript',
         'https://i.blogs.es/ee8e7a/jsrobot-2017-11-28-17-46-11/450_1000.png',
         'https://lab.reaal.me/jsrobot/',
+        `https://youtu.be/oxh8ap1DjlA`,
+        true,
     ),
     new game(
         2,
@@ -34,6 +40,8 @@ const initialData=[
         'Python',
         'http://www.pythonchallenge.com/logo.jpg',
         'www.pythonchallenge.com',
+        `https://youtu.be/otBD59s4fpg`,
+        true,
     ),
     new game(
         3,
@@ -42,6 +50,8 @@ const initialData=[
         'JavaScript',
         'https://robocode.sourceforge.io/gfx/robocode_logo_tanks.png',
         'https://robocode.sourceforge.io/',
+        `https://youtu.be/8JJqc5-erVM`,
+        false,
     ),
     new game(
         4,
@@ -50,6 +60,8 @@ const initialData=[
         'JavaScript',
         'https://raw.githubusercontent.com/screeps/screeps/HEAD/logo.png',
         'https://screeps.com/',
+        `https://youtu.be/LkXuGcrCZtU`,
+        true,
     ),
     new game(
         5,
@@ -58,6 +70,8 @@ const initialData=[
         'SQL',
         'https://www.freecodecamp.org/news/content/images/2020/08/The_SQL_Murder_Mystery.jpg',
         'https://mystery.knightlab.com/',
+        `https://youtu.be/jbioR14VQYI`,
+        true,
     ),
     new game(
         6,
@@ -66,6 +80,8 @@ const initialData=[
         'CSS',
         'https://i.ytimg.com/vi/BaT22bWcGwU/maxresdefault.jpg',
         'https://flukeout.github.io/',
+        `https://youtu.be/SbYdwj5lito`,
+        false,
     ),
 ]
 
@@ -73,7 +89,7 @@ let games=JSON.parse(localStorage.getItem('games'))||initialData
 
 localStorage.setItem('games',JSON.stringify(games))
 
-let featuredGame=JSON.parse(localStorage.getItem('featured'))||initialData[3]
+let featuredGame=JSON.parse(localStorage.getItem('featured'))||initialData[4]
 
 let session=JSON.parse(localStorage.getItem('session'))||[]
 
@@ -89,7 +105,18 @@ if(session.admin){
 //login button
 let loginBtnText=document.querySelector('#user-log')
 
-if(session.username){loginBtnText.innerHTML=session.username}
+let userDropdown=`
+                <div class="dropdown dropstart">
+                    <button class="btn btn-outline-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ${session.username}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="/pages/profile.html">My profile</a></li>
+                        <li><a class="dropdown-item" href="/pages/login.html" onclick="logOut()">Log Out</a></li>
+                    </ul>
+                </div>`
+
+if(session.username){loginBtnText.innerHTML=userDropdown}
 
 const logOut=()=>localStorage.removeItem('session')
 

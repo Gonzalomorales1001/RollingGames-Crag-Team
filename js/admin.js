@@ -2,7 +2,7 @@ let mainTag=document.querySelector('#main')
 
 if(!session.admin){
   let accessDenied=`
-  <div class="vh-100">
+  <div class="vh-100 d-flex justify-content-center align-items-center">
   <div class="alert alert-danger mx-4" role="alert" id="access-denied">
   You do not have permission to access this page
   </div>
@@ -23,9 +23,15 @@ const loadTable=()=>{
     let tr=document.createElement('tr')
 
     let content=`
+    <th scope="row" class="d-none d-md-table-cell text-center">${game.id}</th>
     <th scope="row">${game.title}</th>
     <td class="text-justify d-none d-md-table-cell">${game.description}</td>
-    <td class="d-none d-md-table-cell">${game.category}</td>
+    <td class="d-none d-lg-table-cell">${game.category}</td>
+    <td class="text-center fs-4">
+        <div class="form-check form-switch d-flex justify-content-center align-items-center">
+        <input class="form-check-input" type="checkbox" role="switch" ${game.published?'checked':''} ${game.id==featuredGame.id?'disabled':''} onchange="publish(${game.id})">
+        </div>
+    </td>
     <td class="text-center fs-3"><i class="bi bi-pencil-square" onclick="showEditGameModal(${game.id})"></i></td>
     <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill" onclick="deleteGame(${game.id})"></i></td>
     `
@@ -36,6 +42,21 @@ const loadTable=()=>{
 
 const saveGamesInLS=()=>localStorage.setItem('games',JSON.stringify(games))
 
+const publish=(id)=>{
+  let foundGame=games.find(game=>game.id==id)
+  let foundGameIndex=games.findIndex(game=>game.id==id)
+
+  if(foundGame==featuredGame){
+    return alert(`Can't unpublish featured game`)
+  }
+  foundGame.published= !foundGame.published
+  games[foundGameIndex]=foundGame
+  loadFeatureOptions()
+  selectFeatured()
+  saveGamesInLS()
+  loadTable()
+}
+
 const deleteGame=(id)=>{
   let findGame=games.find(game=>game.id==id)
   let indexgame=games.findIndex(game=>game.id==id)
@@ -45,17 +66,19 @@ const deleteGame=(id)=>{
   confirmDelete?games.splice(indexgame,1):
   localStorage.removeItem('games')
   saveGamesInLS()
+  loadFeatureOptions()
+  selectFeatured()
   loadTable()
 }
 
 const addNewGame=(event)=>{
   event.preventDefault()
-  console.log(`funcion enabled`)
   let nameInput=document.querySelector('#game-name')
   let urlInput=document.querySelector('#game-url')
   let descInput=document.querySelector('#game-description')
   let categorySelect=document.querySelector('#game-category')
   let urlImageInput=document.querySelector('#game-imageURL')
+  let urlVideoInput=document.querySelector('#video-url')
 
   let newGame=new game(
     new Date().getTime(),
@@ -63,10 +86,13 @@ const addNewGame=(event)=>{
     descInput.value,
     categorySelect.value,
     urlImageInput.value,
-    urlInput.value
+    urlInput.value,
+    urlVideoInput.value,
     )
 
   games.push(newGame)
+  loadFeatureOptions()
+  selectFeatured()
   saveGamesInLS()
   loadTable()
 
@@ -75,6 +101,7 @@ const addNewGame=(event)=>{
   categorySelect.value=''
   urlImageInput.value=''
   urlInput.value=''
+  urlVideoInput.value=''
 }
 
 let gameData=null
@@ -87,6 +114,7 @@ const showEditGameModal=(id)=>{
 
   let nameInput=document.querySelector('#game-name__edit-modal')
   let urlInput=document.querySelector('#game-url__edit-modal')
+  let urlVideoInput=document.querySelector('#video-url__edit-modal')
   let descInput=document.querySelector('#game-description__edit-modal')
   let categorySelect=document.querySelector('#game-category__edit-modal')
   let urlImageInput=document.querySelector('#game-imageURL__edit-modal')
@@ -96,6 +124,7 @@ const showEditGameModal=(id)=>{
   categorySelect.value=gameData.category
   urlImageInput.value=gameData.img
   urlInput.value=gameData.url
+  urlVideoInput.value=gameData.video
 
   imgPreview.src=gameData.img
 }
@@ -111,6 +140,7 @@ const editGame=(event)=>{
 
   let nameInput=document.querySelector('#game-name__edit-modal')
   let urlInput=document.querySelector('#game-url__edit-modal')
+  let urlVideoInput=document.querySelector('#video-url__edit-modal')
   let descInput=document.querySelector('#game-description__edit-modal')
   let categorySelect=document.querySelector('#game-category__edit-modal')
   let urlImageInput=document.querySelector('#game-imageURL__edit-modal')
@@ -120,9 +150,12 @@ const editGame=(event)=>{
   games[index].category=categorySelect.value
   games[index].img=urlImageInput.value
   games[index].url=urlInput.value
+  games[index].video=urlVideoInput.value
 
   saveGamesInLS()
   loadTable()
+  loadFeatureOptions()
+  selectFeatured()
   editGameModal.hide()
 }
 
@@ -130,11 +163,13 @@ const editGame=(event)=>{
 let featuredSelect=document.querySelector('#featured-select')
 
 const loadFeatureOptions=()=>{
+  featuredSelect.innerHTML=''
   
   games.forEach(game=>{
     let option=document.createElement('option')
     let title=game.title
     if(title==featuredGame.title){option.setAttribute('selected','')}
+    if(!game.published){option.setAttribute('disabled','')}
     option.innerHTML=title
     featuredSelect.appendChild(option)
   })
@@ -143,6 +178,7 @@ const loadFeatureOptions=()=>{
 const selectFeatured=()=>{
   featuredGame=games.find(game=>game.title==featuredSelect.value)
   localStorage.setItem('featured',JSON.stringify(featuredGame))
+  loadTable()
 }
 
 
@@ -164,7 +200,7 @@ const loadUserTable=()=>{
     <td class="d-none d-md-table-cell ${user.id==0?'text-danger-emphasis':''}">${user.email}</td>
     <td class="text-center fs-4">
         <div class="form-check form-switch d-flex justify-content-center align-items-center">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" ${user.admin?'checked':''} ${user.id==0?'disabled':''} onclick="setAdmin(${user.id})">
+        <input class="form-check-input" type="checkbox" role="switch" ${user.admin?'checked':''} ${user.id==0?'disabled':''} onchange="setAdmin(${user.id})">
         </div>
     </td>
     <td class="text-center fs-3">${user.id==0?'':`<i class="text-danger bi bi-trash-fill" onclick="deleteUser(${user.id})"></i>`}</td>
