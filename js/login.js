@@ -225,7 +225,7 @@ const signUp=(event)=>{
                     registerPassword.value=''
                     confirmPassword.value=''
                     clear()
-        
+                    alert('User registered successfully! Our admins will review your registration request')
                 }else{
                     document.querySelector('#MismatchPasswords').style.display='inline'
                     confirmPassword.style.outline='2px solid red'
