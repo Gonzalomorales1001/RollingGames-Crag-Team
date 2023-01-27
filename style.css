@@ -1,4 +1,9 @@
 /*general*/
+@font-face {
+    font-family: 'Outfit';
+    src: url(/assets/fonts/Outfit.ttf);
+}
+
 :root{
     --DewbieViolet: #5b00b0;
     --DewbieVioletTransparency: rgba(91, 0, 176,0.3);
