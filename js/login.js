@@ -83,186 +83,38 @@ let registerUsername=document.querySelector('#register-username')
 let registerEmail=document.querySelector('#register-email')
 let registerPassword=document.querySelector('#register-password')
 let confirmPassword=document.querySelector('#confirm-password')
+//modal input
+let forgotPassword=document.querySelector('#forgot-password-input')
 
 class user{
-    constructor(username,password,email,admin=false){
+    constructor(username,password,email,id,admin=false){
         this.username=username
         this.password=password
         this.email=email
+        this.id=id
         this.admin=admin
     }
 }
 
 //default users
-const admin = new user('admin','cragteam','admin@admin.com',true)
-const defaultUser=new user('user','1234','user@gmail.com')
+const admin = new user('admin','cragteam','cragteam@gmail.com',0,true)
+const defaultUser=new user('user','1234','user@gmail.com',1)
+
+
+//users registered
+let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
+localStorage.setItem('users',JSON.stringify(users))
+//users that require admin approval
+let queue=JSON.parse(localStorage.getItem('queue'))||[]
+localStorage.setItem('queue',JSON.stringify(queue))
+//users who sent password change request
+let passwordsChangeRequest=JSON.parse(localStorage.getItem('passwordsChangeRequest'))||[]
+localStorage.setItem('passwordsChangeRequest',JSON.stringify(passwordsChangeRequest))
 
 //functions to save data in local storage
 const saveUsersInLS=()=>localStorage.setItem('users',JSON.stringify(users))
 const saveQueueInLS=()=>localStorage.setItem('queue',JSON.stringify(queue))
 const saveRequestsInLS=()=>localStorage.setItem('passwordsChangeRequest',JSON.stringify(passwordsChangeRequest))
-
-//users registered
-let users=JSON.parse(localStorage.getItem('users'))||[admin,defaultUser]
-saveUsersInLS()
-//users that require admin approval
-let queue=JSON.parse(localStorage.getItem('queue'))||[]
-saveQueueInLS()
-//users who sent password change request
-let passwordsChangeRequest=JSON.parse(localStorage.getItem('passwordsChangeRequest'))||[]
-saveRequestsInLS()
-
-
-//this variable finds an existing user
-let findUser=''
-//log in func
-const logIn=(event)=>{
-    event.preventDefault()
-
-    let usernameValue=username.value
-    let passwordValue=password.value
-
-    findUser=users.find(user=>user.username===usernameValue)
-
-    if(findUser){
-        if(usernameValue===findUser.username&&passwordValue===findUser.password){
-            localStorage.setItem('sesion',JSON.stringify(findUser))
-            username.value=''
-            password.value=''
-            clear()
-            if(findUser.admin){
-                location.replace('/pages/admin.html')
-            }else{
-                location.replace('/index.html')
-            }
-            
-            // location.replace('/pages/index.html')
-        }else{
-            document.querySelector('#IncorrectPassword').style.display='inline'
-            password.style.outline='2px solid red'
-        } 
-    }else{
-        document.querySelector('#UserNotFound').style.display='inline'
-        username.style.outline='2px solid red'
-    }
-}
-
-//user verification
-//approved users
-let userExist=false
-let usedEmail=false
-//users in queue
-let queueUserExist=false
-let queueUsedEmail=false
-
-//register func
-const signUp=(event)=>{
-    event.preventDefault()
-
-    let registerUsernameValue=registerUsername.value
-    let registerEmailValue=registerEmail.value
-    let registerPasswordValue=registerPassword.value
-    let confirmPasswordValue=confirmPassword.value
-
-    userExist=users.find(user=>user.username==registerUsernameValue)
-    usedEmail=users.find(user=>user.email==registerEmailValue)
-
-    queueUserExist=queue.find(queue=>queue.username==registerUsernameValue)
-    queueUsedEmail=queue.find(queue=>queue.email==registerEmailValue)
-
-
-    if(!userExist&&!queueUserExist){
-        if(!usedEmail&&!queueUsedEmail){
-            if(registerPasswordValue.length>=7){
-                if(registerPasswordValue===confirmPasswordValue){
-                    let newUser=new user(registerUsernameValue,registerPasswordValue,registerEmailValue)
-                    queue.push(newUser)
-                    saveQueueInLS()
-        
-                    registerUsername.value=''
-                    registerEmail.value=''
-                    registerPassword.value=''
-                    confirmPassword.value=''
-                    clear()
-        
-                }else{
-                    document.querySelector('#MismatchPasswords').style.display='inline'
-                    confirmPassword.style.outline='2px solid red'
-                }
-            }else{
-                document.querySelector('#PasswordMinLength').style.display='inline'
-                registerPassword.style.outline='2px solid red'
-            }
-        }else{
-            document.querySelector('#EmailInUse').style.display='inline'
-            registerEmail.style.outline='2px solid red'
-        }
-    }else{
-        document.querySelector('#UserAlreadyExist').style.display='inline'
-        registerUsername.style.outline='2px solid red'
-    }
-
-    userExist=false
-    usedEmail=false
-
-    queueUserExist=false
-    queueUsedEmail=false
-}
-
-
-//Modal
-let modal=document.querySelector('#modal')
-
-// let openModalButton=document.querySelector('#openModal')
-// openModalButton.addEventListener('click',forgotPasswordModal)
-
-const forgotPasswordModal=(event)=>{
-    event.preventDefault()
-    modal.style.display='flex'
-}
-
-const closeModal=(event)=>{
-    event.preventDefault()
-    modal.style.display='none'
-    forgotPassword.value=''
-    clear()
-}
-
-let forgotPassword=document.querySelector('#forgot-password-input')
-
-const sendChangePasswordRequest=(event)=>{
-    event.preventDefault()
-    let forgotPasswordValue=forgotPassword.value
-
-    usedEmail=users.find(user=>user.email==forgotPasswordValue)
-    queueUsedEmail=queue.find(queue=>queue.email==forgotPasswordValue)
-
-    userExist=users.find(user=>user.username==forgotPasswordValue)
-    queueUserExist=queue.find(queue=>queue.username==forgotPasswordValue)
-    
-    let requestSent=users.find(user=>user.username==forgotPasswordValue||user.email==forgotPasswordValue)||queue.find(UserInQueue=>UserInQueue.username==forgotPasswordValue||UserInQueue.email==forgotPasswordValue)
-
-    let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request==requestSent)
-
-    if(usedEmail||queueUsedEmail||userExist||queueUserExist){
-        if(!passwordChangeRequestAlreadySent){
-            passwordsChangeRequest.push(requestSent)
-            saveRequestsInLS()
-            alert('Change password request sent successfully!')
-            closeModal(event)
-            forgotPassword.value=''
-        }else{
-            document.querySelector('#EmailAlreadyRequested').style.display='block'
-        }
-    }else{
-        document.querySelector('#EmailNotFound').style.display='block'
-    }
-
-    usedEmail=false
-    queueUsedEmail=false
-    userExist=false
-    queueUserExist=false
-}
 
 //clear errors
 //login
@@ -298,4 +150,149 @@ function clear() {
     //modal input
     document.querySelector('#EmailNotFound').style.display='none'
     document.querySelector('#EmailAlreadyRequested').style.display='none'
+}
+
+let modal=document.querySelector('#modal')
+
+//this variable finds an existing user
+let findUser=''
+//log in func
+const logIn=(event)=>{
+    event.preventDefault()
+
+    let usernameValue=username.value
+    let passwordValue=password.value
+
+    findUser=users.find(user=>user.username===usernameValue)
+
+    if(findUser){
+        if(usernameValue===findUser.username&&passwordValue===findUser.password){
+            localStorage.setItem('session',JSON.stringify(findUser))
+            username.value=''
+            password.value=''
+            clear()
+            if(findUser.admin){
+                location.replace('/pages/admin.html')
+            }else{
+                location.replace('/index.html')
+            }
+            
+            // location.replace('/pages/index.html')
+        }else{
+            document.querySelector('#IncorrectPassword').style.display='inline'
+            password.style.outline='2px solid red'
+        } 
+    }else{
+        document.querySelector('#UserNotFound').style.display='inline'
+        username.style.outline='2px solid red'
+    }
+}
+
+//user verification
+//approved users
+let userExist=false
+let usedEmail=false
+//users in queue
+let queueUserExist=false
+let queueUsedEmail=false
+
+//register users func
+const signUp=(event)=>{
+    event.preventDefault()
+
+    let registerUsernameValue=registerUsername.value
+    let registerEmailValue=registerEmail.value
+    let registerPasswordValue=registerPassword.value
+    let confirmPasswordValue=confirmPassword.value
+
+    userExist=users.find(user=>user.username==registerUsernameValue)
+    usedEmail=users.find(user=>user.email==registerEmailValue)
+
+    queueUserExist=queue.find(queue=>queue.username==registerUsernameValue)
+    queueUsedEmail=queue.find(queue=>queue.email==registerEmailValue)
+
+
+    if(!userExist&&!queueUserExist){
+        if(!usedEmail&&!queueUsedEmail){
+            if(registerPasswordValue.length>=7){
+                if(registerPasswordValue===confirmPasswordValue){
+                    let newUser=new user(registerUsernameValue,registerPasswordValue,registerEmailValue,new Date().getTime())
+                    queue.push(newUser)
+                    saveQueueInLS()
+        
+                    registerUsername.value=''
+                    registerEmail.value=''
+                    registerPassword.value=''
+                    confirmPassword.value=''
+                    clear()
+                    alert('User registered successfully! Our admins will review your registration request')
+                }else{
+                    document.querySelector('#MismatchPasswords').style.display='inline'
+                    confirmPassword.style.outline='2px solid red'
+                }
+            }else{
+                document.querySelector('#PasswordMinLength').style.display='inline'
+                registerPassword.style.outline='2px solid red'
+            }
+        }else{
+            document.querySelector('#EmailInUse').style.display='inline'
+            registerEmail.style.outline='2px solid red'
+        }
+    }else{
+        document.querySelector('#UserAlreadyExist').style.display='inline'
+        registerUsername.style.outline='2px solid red'
+    }
+
+    userExist=false
+    usedEmail=false
+
+    queueUserExist=false
+    queueUsedEmail=false
+}
+
+//modal functions
+
+const openModal=(event)=>{
+    event.preventDefault()
+    modal.style.display='flex'
+}
+
+const closeModal=(event)=>{
+    event.preventDefault()
+    modal.style.display='none'
+    forgotPassword.value=''
+    clear()
+}
+
+const sendChangePasswordRequest=(event)=>{
+    event.preventDefault()
+    let forgotPasswordValue=forgotPassword.value
+
+    usedEmail=users.find(user=>user.email==forgotPasswordValue)
+    queueUsedEmail=queue.find(queue=>queue.email==forgotPasswordValue)
+
+    userExist=users.find(user=>user.username==forgotPasswordValue)
+    queueUserExist=queue.find(queue=>queue.username==forgotPasswordValue)
+    
+    let requestSent=users.find(user=>user.username==forgotPasswordValue||user.email==forgotPasswordValue)||queue.find(UserInQueue=>UserInQueue.username==forgotPasswordValue||UserInQueue.email==forgotPasswordValue)
+    let passwordChangeRequestAlreadySent=passwordsChangeRequest.find(request=>request.id==requestSent.id)
+
+    if(usedEmail||queueUsedEmail||userExist||queueUserExist){
+        if(!passwordChangeRequestAlreadySent){
+            passwordsChangeRequest.push(requestSent)
+            saveRequestsInLS()
+            alert('Change password request sent successfully!')
+            closeModal(event)
+            forgotPassword.value=''
+        }else{
+            document.querySelector('#EmailAlreadyRequested').style.display='block'
+        }
+    }else{
+        document.querySelector('#EmailNotFound').style.display='block'
+    }
+
+    usedEmail=false
+    queueUsedEmail=false
+    userExist=false
+    queueUserExist=false
 }
