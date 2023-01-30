@@ -1,0 +1,96 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+}
+.container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 900px;
+    height: 380px;
+    background-color: rgb(244, 242, 246);
+    margin: 20px;
+}
+.container .img-container{
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 100%;
+background-color: blueviolet;
+}
+.container .img-container::before{
+    content: "SQL";
+    position: absolute;
+    top: 0;
+    left: 24px;
+    color: black;
+    opacity: 0.2;
+    font-size: 4em;
+    font-weight: 800;
+}
+.container .img-container img{
+    position: relative;
+    width: 460px;
+    transform: rotate(-20deg);
+    left: -px;
+    transition: .9s linear;
+}
+.container .details{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 100%;
+box-sizing: border-box;
+padding: 40px;
+}
+.container .details h2{
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 2em;
+    line-height: 1em;
+    color: rgb(93, 42, 165);
+}
+.container .details h2 span{
+    font-size: 0.4em;
+    text-transform: uppercase;
+letter-spacing: 2px;
+color: aquamarine;
+}
+.container .details p{
+    max-width: 85%;
+    margin-left: 15%;
+    color:rgb(61, 21, 21);
+    font-size: 15px;
+    margin-bottom: 36px;
+}
+.container .details h3{
+    margin: 0;
+    padding: 0;
+    font-size: 2.5em;
+    color: brown;
+    float: left;
+}
+.container .details button{
+    background: black;
+    color: beige;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    margin-top: 5px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 40px;
+    float: right;
+}
