@@ -1,0 +1,138 @@
+.banner{
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-image: url(/assets/img/profile-banner.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner__user{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    text-align: center;
+    margin: 0px auto;
+    top: 150px;
+    left: 0px;
+    right: 0px;
+}
+
+.banner__user__img{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    border: 3px solid white;
+    cursor: pointer;
+    /* background-image: url(/assets/img/profile-avatar-example.png); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.edit{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit:nth-of-type(1){
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    z-index: 10;
+    cursor:pointer;
+}
+
+
+.banner__edit, .banner__user__img--overlay {display: none;}
+
+.title{
+    height: 25vh;
+}
+
+.game-article{
+    background-color: rgba(100, 100, 100, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.preview{
+    width: 100%;
+}
+
+.preview img{
+    background-color: #999;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.input--error{
+    color: red;
+    opacity: 0%;
+}
+.input--error-relative{position:relative}
+
+@media (min-width: 992px) {
+    .banner__user{
+        margin: 0;
+        left: 50px;
+        right: auto;
+    }
+    .banner__user__img--overlay{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0%;
+    }
+    
+    .banner__user__img--overlay:hover{
+        opacity: 100%;
+        transition: 0.3s;
+    }
+    
+    .banner__edit{
+        display: block;
+        background-color: rgba(0, 0, 0, 0.15);
+        width: 100%;
+        height: 100%;
+        opacity: 0%;
+        position: relative;
+    }
+    
+    .banner__edit:hover{
+        opacity: 100%;
+    }
+    
+    .banner__edit button{
+        background-color: rgba(255, 255, 255, 0.5);
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        border-radius: 20px;
+        cursor: pointer;
+        color: black;
+    }
+    
+    .banner__edit:hover{
+        opacity: 100%;
+    }
+}
