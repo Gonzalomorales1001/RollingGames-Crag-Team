@@ -2,7 +2,23 @@
     margin: 0;
     padding: 0;
 }
-
+body{
+    background-image: url(https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700812861.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+#CRAG{
+    padding-top: 100px;
+}
+#logo-gif{
+    width: 40%;
+}
+.textoCRAG{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.5rem;
+}
 .wrapper{
     min-height: 80vh;
     display: flex;
@@ -64,11 +80,20 @@
     margin-top: 30px;
 }
 .socials i{
-    margin: 0 15px;
+    margin: 0 10px;
+}
+
+.inputContact{
+    background-color: rgb(88, 6, 130);
 }
 
 @media (max-width:991px){
     .wrapper{
         flex-direction: column;
+    }
+}
+@media (max-width:991px){
+    #logo-gif{
+        width: 100%;
     }
 }
