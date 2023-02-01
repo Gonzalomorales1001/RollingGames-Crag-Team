@@ -1,0 +1,145 @@
+body{
+    background-image: url(https://wallpapercave.com/wp/wp9136603.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+body::before{
+    content:"";
+    width: 100%;
+    min-height: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background: linear-gradient(90deg,#6e0e84,#aaaaaa);
+    opacity: 0.7;
+    z-index: -1;
+
+}
+/*Espacio para el navbar*/
+.espacio{
+    padding-top: 60px;
+}
+/*Juego destacado*/
+.destacado{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.destacado .contenedor{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 900px;
+    height: 380px;
+    background-color: white;
+    margin: 20px;
+}
+.destacado .contenedor .img-contenedor{
+    position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 100%;
+background-color: blueviolet;
+}
+.destacado .contenedor .img-contenedor::before{
+    content: "SQL";
+    position: absolute;
+    top: 0;
+    left: 24px;
+    color: black;
+    opacity: 0.2;
+    font-size: 4em;
+    font-weight: 800;
+}
+.destacado .contenedor .img-contenedor img{
+    position: relative;
+    width: 460px;
+    transform: rotate(-20deg);
+    left: -px;
+    transition: .9s linear;
+}
+.destacado .contenedor .details{
+    display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 100%;
+box-sizing: border-box;
+padding: 40px;
+}
+.destacado .contenedor .details h2{
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 2em;
+    line-height: 1em;
+    color: rgb(93, 42, 165);
+}
+.destacado .contenedor .details h2 span{
+    font-size: 0.4em;
+    text-transform: uppercase;
+letter-spacing: 2px;
+color: aquamarine;
+}
+.destacado .contenedor .details p{
+    max-width: 85%;
+    margin-left: 15%;
+    color:rgb(61, 21, 21);
+    font-size: 15px;
+    margin-bottom: 36px;
+}
+.destacado .contenedor .details h3{
+    margin: 0;
+    padding: 0;
+    font-size: 2.5em;
+    color: brown;
+    float: left;
+}
+.destacado .contenedor .details button{
+    background: black;
+    color: beige;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    margin-top: 5px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 40px;
+    float: right;
+}
+/*responsive Juego destacado*/
+@media(max-width:1080px){
+    .destacado .contenedor{
+        height: auto;
+    }
+    .destacado .contenedor .img-contenedor{
+        padding:40px;
+        box-sizing: border-box;
+        width: 100% !important;
+        height: auto;
+        text-align: center;
+        overflow: hidden;
+    }
+    .destacado .contenedor .img-contenedor img{
+        left:initial;
+        max-width: 100%;
+        transform: rotate(0deg);
+    }
+    .destacado .contenedor .details{
+        width: 100% !important;
+        height: auto;
+        padding: 20px;
+    }
+}
+/**/
