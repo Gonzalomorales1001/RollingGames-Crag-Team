@@ -61,10 +61,32 @@ const changeAvatar=(event)=>{
     let users=JSON.parse(localStorage.getItem('users'))
     let logedUserIndex=users.findIndex(user=>user.id==session.id)
 
-    if(validateURL(changeAvatarInput.value)){
-        users[logedUserIndex].photo=changeAvatarInput.value
-        session.photo=changeAvatarInput.value
-        document.querySelector('#InvalidURL').style.opacity="0%"
+        if(validateURL(changeAvatarInput.value)){
+            users[logedUserIndex].photo=imgPreview.src
+            session.photo=imgPreview.src
+            document.querySelector('#InvalidURL').style.opacity="0%"
+            localStorage.setItem('users',JSON.stringify(users))
+            localStorage.setItem('session',JSON.stringify(session))
+        
+            loadUserImages()
+        
+            clearInputs()
+            changeUserPhotoModal.hide()
+        }else{
+            document.querySelector('#InvalidURL').style.opacity="100%"
+        }
+
+    
+}
+
+const deleteAvatar=()=>{
+    if(confirm('Are you sure to delete profile avatar?')){
+        let users=JSON.parse(localStorage.getItem('users'))
+        let logedUserIndex=users.findIndex(user=>user.id==session.id)
+    
+        users[logedUserIndex].photo=defaultAvatar.src
+        session.photo=defaultAvatar.src
+    
         localStorage.setItem('users',JSON.stringify(users))
         localStorage.setItem('session',JSON.stringify(session))
     
@@ -72,26 +94,7 @@ const changeAvatar=(event)=>{
     
         clearInputs()
         changeUserPhotoModal.hide()
-    }else{
-        document.querySelector('#InvalidURL').style.opacity="100%"
     }
-    
-}
-
-const deleteAvatar=()=>{
-    let users=JSON.parse(localStorage.getItem('users'))
-    let logedUserIndex=users.findIndex(user=>user.id==session.id)
-
-    users[logedUserIndex].photo=defaultAvatar.src
-    session.photo=defaultAvatar.src
-    document.querySelector('#InvalidURL').style.opacity="0%"
-    localStorage.setItem('users',JSON.stringify(users))
-    localStorage.setItem('session',JSON.stringify(session))
-
-    loadUserImages()
-
-    clearInputs()
-    changeUserPhotoModal.hide()
 }
 
 function clearInputs(event){

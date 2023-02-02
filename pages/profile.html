@@ -120,11 +120,11 @@
           <small>Preview</small>
           <img id="modal-img-preview" src="" alt="preview">
         </div>
-        <small class="input--error" id="InvalidURL">Invalid URL</small>
-          <div class="input-group mb-3 position-relative">
-            <input type="text" name="avatarURL" id="avatarURLInput" class="form-control d-inline-block" placeholder="URL Image" aria-describedby="deleteAvatarBtn" onchange="onChangeImgPreview()" required>
-            <button class="btn btn-danger" type="button" id="deleteAvatarBtn" onclick="clearInputs()"><i class="bi bi-trash-fill"></i></button>
-          </div>
+        <small class="input--error" id="InvalidURL">Please enter a valid URL</small>
+        <div class="input-group mb-3 position-relative">
+          <input type="text" name="avatarURL" id="avatarURLInput" class="form-control d-inline-block" placeholder="URL Image" aria-describedby="deleteAvatarBtn" onchange="onChangeImgPreview()" required>
+          <button class="btn btn-danger" type="button" id="deleteAvatarBtn" onclick="clearInputs()"><i class="bi bi-trash-fill"></i></button>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" onclick="deleteAvatar()">Delete Profile Photo</button>
@@ -146,8 +146,8 @@
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="">Close</button>
+        <button type="button" class="btn btn-dewbieviolet" onclick="">Save changes</button>
       </div>
     </div>
   </div>
