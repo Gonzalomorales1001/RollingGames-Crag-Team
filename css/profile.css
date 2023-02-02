@@ -87,6 +87,14 @@
 }
 .input--error-relative{position:relative}
 
+.banner-btn{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
 @media (min-width: 992px) {
     .banner__user{
         margin: 0;
