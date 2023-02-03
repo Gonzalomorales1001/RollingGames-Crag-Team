@@ -120,6 +120,9 @@ if(session.username){loginBtnText.innerHTML=userDropdown}
 
 const logOut=()=>localStorage.removeItem('session')
 
+// let favoriteBadge=document.querySelector('#favorite-badge')
 
-
-
+const addFavorite=()=>{
+    // favoriteBadge=classList='bi bi-star-fill'
+    user.favorites.push(game)
+}

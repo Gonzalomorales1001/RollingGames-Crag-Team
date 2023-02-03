@@ -238,7 +238,7 @@
     </script>
     <script src="https://smtpjs.com/v3/smtp.js"> </script>
     <script type="text/javascript">
-      
+      //send email
       let btn = document.getElementById("btn")
       btn.addEventListener("click",function(e){
         e.preventDefault()
@@ -267,7 +267,7 @@
                       Body : body
                   }).then(
                     message => alert(message)
-                    //((message) =>{alert("your question was sent "+ message)})
+                    //((message) =>{alert("your question was sent " + message)})
                   );
                   formulario.reset()                
                 }

@@ -91,7 +91,7 @@ let defaultBanner=new Image()
 defaultAvatar.src='/assets/img/profile-avatar-example.png'
 defaultBanner.src='/assets/img/profile-banner.jpg'
 class user{
-    constructor(username,password,email,id,admin=false,photo=defaultAvatar,banner=defaultBanner){
+    constructor(username,password,email,id,admin=false,photo=defaultAvatar,banner=defaultBanner,favorites=[]){
         this.username=username
         this.password=password
         this.email=email
@@ -99,6 +99,7 @@ class user{
         this.admin=admin
         this.photo=photo.src
         this.banner=banner.src
+        this.favorites=favorites
     }
 }
 
