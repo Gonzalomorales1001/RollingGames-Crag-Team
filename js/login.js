@@ -86,13 +86,19 @@ let confirmPassword=document.querySelector('#confirm-password')
 //modal input
 let forgotPassword=document.querySelector('#forgot-password-input')
 
+let defaultAvatar=new Image()
+let defaultBanner=new Image()
+defaultAvatar.src='/assets/img/profile-avatar-example.png'
+defaultBanner.src='/assets/img/profile-banner.jpg'
 class user{
-    constructor(username,password,email,id,admin=false){
+    constructor(username,password,email,id,admin=false,photo=defaultAvatar,banner=defaultBanner){
         this.username=username
         this.password=password
         this.email=email
         this.id=id
         this.admin=admin
+        this.photo=photo.src
+        this.banner=banner.src
     }
 }
 

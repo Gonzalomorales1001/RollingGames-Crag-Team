@@ -111,7 +111,7 @@ let userDropdown=`
                         ${session.username}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="/pages/profile.html">My profile</a></li>
+                        <li><a class="dropdown-item" href="/pages/profile.html">My Profile</a></li>
                         <li><a class="dropdown-item" href="/pages/login.html" onclick="logOut()">Log Out</a></li>
                     </ul>
                 </div>`

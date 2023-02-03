@@ -48,14 +48,6 @@ h1, h2{
     vertical-align: middle;
 }
 
-.modal{
-    backdrop-filter: blur(7px);
-}
-
-.modal-content{
-    background-color: rgba(10, 10, 10, 0.3);
-}
-
 .preview{
     width: 100%;
 }
