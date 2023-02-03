@@ -205,7 +205,7 @@ color: aquamarine;
     color: brown;
     float: left;
 }
-.destacado .contenedor .details button{
+.destacado .contenedor .details .button{
     background: black;
     color: beige;
     border: none;
@@ -218,6 +218,7 @@ color: aquamarine;
     font-weight: 600;
     border-radius: 40px;
     float: right;
+    text-decoration: none;
 }
 /*responsive Juego destacado*/
 @media(max-width:1080px){

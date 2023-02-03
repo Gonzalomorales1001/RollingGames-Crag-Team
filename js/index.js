@@ -27,6 +27,15 @@ const listarJuegos = () => {
   });
 };
 //marcar juego favorito
+//load featured game data
+const loadFeaturedGame=()=>{
+  let featuredViewMoreBtn=document.querySelector('#featured-view-more')
+  let featuredTitle=document.querySelector('#featured-title')
+
+  featuredViewMoreBtn.href=`/pages/Games.html?id=${featuredGame.id}`
+  featuredTitle.innerHTML=featuredGame.title
+}
+
 
 listarJuegos();
 
