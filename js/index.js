@@ -31,11 +31,45 @@ const listarJuegos = () => {
 const loadFeaturedGame=()=>{
   let featuredViewMoreBtn=document.querySelector('#featured-view-more')
   let featuredTitle=document.querySelector('#featured-title')
+  let imgContenedor=document.querySelector('.img-contenedor')
+  let featuredImg=document.querySelector('#featured-image')
+  // let featuredCategory=document.querySelector('')
+  let featuredDesc=document.querySelector('#featured-desc')
 
   featuredViewMoreBtn.href=`/pages/Games.html?id=${featuredGame.id}`
   featuredTitle.innerHTML=featuredGame.title
+  featuredImg.src=featuredGame.img
+  featuredDesc.innerHTML=featuredGame.description
+  switch(featuredGame.category){
+    case 'HTML':
+    imgContenedor.style.backgroundColor=color.HTML
+    break
+    case 'CSS':
+    imgContenedor.style.backgroundColor=color.CSS
+    break
+    case 'JavaScript':
+    imgContenedor.style.backgroundColor=color.JavaScript
+    break
+    case 'Java':
+    imgContenedor.style.backgroundColor=color.Java
+    break
+    case 'Python':
+    imgContenedor.style.backgroundColor=color.Python
+    break
+    case 'C':
+    case 'C#':
+    case 'C++':
+    imgContenedor.style.backgroundColor=color.C
+    break
+    case 'SQL':
+    imgContenedor.style.backgroundColor=color.SQL
+    break
+    default:
+    imgContenedor.style.backgroundColor=color.Others
+    break
+  }
 }
 
-
+loadFeaturedGame()
 listarJuegos();
 

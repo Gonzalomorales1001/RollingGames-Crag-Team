@@ -85,6 +85,17 @@ const initialData=[
     ),
 ]
 
+let color={
+    HTML: '#FFF',
+    CSS: '#FFF',
+    JavaScript: '#FF0',
+    Java: '#FFF',
+    Python: '#FFF',
+    SQL: '#007',
+    C:'#50F',
+    Others:'#888',
+}
+
 let games=JSON.parse(localStorage.getItem('games'))||initialData
 
 localStorage.setItem('games',JSON.stringify(games))
