@@ -207,7 +207,7 @@ min-height: 200px;
     position: relative;
   }
   
-  .overlay {
+  .overlaycarousel {
     position: absolute;
     top: 0;
     bottom: 0;
