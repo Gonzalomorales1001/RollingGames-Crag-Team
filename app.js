@@ -86,14 +86,14 @@ const initialData=[
 ]
 
 let color={
-    HTML: '#FFF',
-    CSS: '#FFF',
-    JavaScript: '#FF0',
-    Java: '#FFF',
-    Python: '#FFF',
-    SQL: '#007',
-    C:'#50F',
-    Others:'#888',
+    HTML: 'RGBA(255,60,7,var(--bs-bg-opacity,1))',
+    CSS: 'RGBA(71,68,255,var(--bs-bg-opacity,1))',
+    JavaScript: 'RGBA(255,255,0,var(--bs-bg-opacity,1))',
+    Java: ' RGBA(255,255,255,var(--bs-bg-opacity,1)) ',
+    Python: 'RGBA(100,100,100,var(--bs-bg-opacity,1))',
+    SQL: 'RGBA(0,0,125,var(--bs-bg-opacity,1))',
+    C:'RGBA(120,0,255,var(--bs-bg-opacity,1))',
+    Others:'#000000',
 }
 
 let games=JSON.parse(localStorage.getItem('games'))||initialData

@@ -16,8 +16,7 @@ const listarJuegos = () => {
     <h2 class="card-title mt-3 tituloJuego">${game.title} </h2>
     <p class="descripcionJuego"> ${game.description}</p>
     <a href="/pages/Games.html?id=${game.id}">
-    <button class="btn btn-success"> read more </button>
-
+    <button class="boton"> read more </button>
     </a>
 
   </  div>`;
