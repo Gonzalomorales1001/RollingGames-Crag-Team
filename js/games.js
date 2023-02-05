@@ -44,7 +44,7 @@ if(game){
       ${game.description}</p>
     </main>
     <footer class="bg-transparent">
-      <a class="btn btn-dewbieviolet w-100 rounded-5">Buy Game</a>
+      <a class="btn btn-dewbieviolet w-100 rounded-5" href="/pages/404.html">Buy Game</a>
     </footer>
   </article>
 </div> `
