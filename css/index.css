@@ -145,6 +145,58 @@ padding: 40px;
     }
 }
 
+/*Texto*/
+
+#textoIndex{
+    text-align: center;
+}
+
+/*Card Juegos*/
+
+.tarjetaJuego{
+background-color: #ffffffa6;
+color:#080000;
+min-height: 200px;
+}
+.tituloJuego{
+    text-align: center;
+}
+.boton{
+    background: #5b00b0;
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+    padding: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 40px;
+    float: right;
+    text-decoration: none;
+}
+.boton:hover{
+    background: #010002;
+    color: #f5f3f7;
+    border: none;
+    outline: none;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 80px;
+    float: right;
+    text-decoration: none;
+}
+
+.lenguajeJuego{
+    margin: 10px;
+    padding: 10px 20px;
+}
 /*carousel*/
 #carruselImg .carousel-item img {
     max-height: 70vh;
