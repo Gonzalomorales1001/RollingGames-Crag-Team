@@ -1,8 +1,11 @@
+.navbar{background-color: transparent;}
+
+.navbar-color{background-color:rgba(91, 0, 176,0.5)}
 
 .banner{
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 300px;
     background: var(--DewbieViolet);
     background-position: center;
     background-repeat: no-repeat;
@@ -17,7 +20,7 @@
     position: absolute;
     text-align: center;
     margin: 0px auto;
-    top: 150px;
+    top: 200px;
     left: 0px;
     right: 0px;
 }
@@ -33,6 +36,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    backdrop-filter: blur(10px);
 }
 
 .edit{
@@ -226,34 +230,34 @@
     background: linear-gradient(to bottom, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
 }
 #b-btn-24{
-    background: url(/assets/img/banners/custom-banner1.jpg);
+    background-image: url(/assets/img/banners/custom-banner1.jpg);
 }
 #b-btn-25{
-    background: url(/assets/img/banners/custom-banner2.jpg);
+    background-image: url(/assets/img/banners/custom-banner2.jpg);
 }
 #b-btn-26{
-    background: url(/assets/img/banners/custom-banner3.jpg);
+    background-image: url(/assets/img/banners/custom-banner3.jpg);
 }
 #b-btn-27{
-    background: url(/assets/img/banners/custom-banner4.png);
+    background-image: url(/assets/img/banners/custom-banner4.png);
 }
 #b-btn-28{
-    background: url(/assets/img/banners/custom-banner5.png);
+    background-image: url(/assets/img/banners/custom-banner5.jpg);
 }
 #b-btn-29{
-    background: url(/assets/img/banners/custom-banner6.jpg);
+    background-image: url(/assets/img/banners/custom-banner6.jpg);
 }
 #b-btn-30{
-    background: url(/assets/img/banners/custom-banner7.jpg);
+    background-image: url(/assets/img/banners/custom-banner7.jpg);
 }
 #b-btn-31{
-    background: url(/assets/img/banners/custom-banner8.jpg);
+    background-image: url(/assets/img/banners/custom-banner8.jpg);
 }
 #b-btn-32{
-    background: url(/assets/img/banners/custom-banner9.jpg);
+    background-image: url(/assets/img/banners/custom-banner9.jpg);
 }
 #b-btn-33{
-    background: url(/assets/img/banners/custom-banner10.jpg);
+    background-image: url(/assets/img/banners/custom-banner10.jpg);
 }
 
 .custom-banner-img{

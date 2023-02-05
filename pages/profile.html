@@ -16,7 +16,7 @@
 </head>
 <body>
     <header class="position-fixed">
-        <nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark">
+        <nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark navbar-color">
           <div class="container">
             <a class="navbar-brand d-flex align-items-center flex-column" href="/index.html">
               <div class="dewbie-logo">
@@ -65,14 +65,15 @@
             </div>
             <!-- <img src="/assets/img/profile-avatar-example.png" class="" alt="profile img"> -->
             <div class="mt-2">
-              <h3>session.username</h3>
-              <p>session.email</p>
+              <h3 id="sessionUsername">session.username</h3>
+              <p id="sessionEmail">session.email</p>
             </div>
           </div>
         </section>
         <section class="d-flex justify-content-center align-items-center title">
-          <h1 class="text-center d-none d-lg-block mb-5">session.username profile</h1>
+          <h1 id="sessionUsernameProfile" class="text-center d-none d-lg-block mb-5">session.username profile</h1>
         </section>
+        <h2 class="m-3">My favorite games</h2>
         <section class="container-fluid">
           <div class="game-article row row-cols-1 row-cols-md-2">
             <div class="col p-0">

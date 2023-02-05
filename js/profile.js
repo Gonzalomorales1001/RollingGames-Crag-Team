@@ -10,12 +10,14 @@ if(session.length<1){
     mainTag.innerHTML=accessDenied
   }
 
+  window.addEventListener("scroll", function(){
+    var nav = document.querySelector(".navbar");
+    nav.classList.toggle("navbar-color",window.scrollY>0)
+    })
+
 //load user images
 const userPhoto=document.querySelector('.banner__user__img')
 const banner=document.querySelector('.banner')
-
-// let defaultAvatar=new Image()
-// defaultAvatar.src='/assets/img/profile-avatar-example.png'
 
 const loadUserImages=()=>{
     userPhoto.style.backgroundImage=`url(${session.photo})`
@@ -33,7 +35,7 @@ const openEditPhotoModal=()=>{
     imgPreview.src=session.photo
 }
 
-const validateURL=(urlImage)=>{
+function validateURL(urlImage){
     try {
         new URL(urlImage)
         return true
@@ -127,4 +129,8 @@ function clearInputs(event){
 //load functions
 if(session){
     loadUserImages()
+    let sessionName=session.username.charAt(0).toUpperCase()+session.username.substring(1)
+    document.querySelector('#sessionUsername').innerHTML=sessionName
+    document.querySelector('#sessionEmail').innerHTML=session.email
+    document.querySelector('#sessionUsernameProfile').innerHTML=sessionName+"'s"+' Profile'
   }
