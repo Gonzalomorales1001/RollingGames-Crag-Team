@@ -77,7 +77,7 @@
 }
 
 .text-bg-c{
-    color: #FFF!important;
+    color: #ffffff!important;
     background-color: RGBA(120,0,255,var(--bs-bg-opacity,1)) !important;
 }
 

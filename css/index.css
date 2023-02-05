@@ -9,6 +9,7 @@
 .espacio{
     padding-top: 60px;
 }
+
 /*Juego destacado*/
 .destacado{
     margin: 0;
@@ -25,131 +26,18 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 900px;
-    height: 380px;
-    background-color: white;
+    height: 420px;
+    background-color: rgb(255, 255, 255);
     margin: 20px;
 }
 .destacado .contenedor .img-contenedor{
     position: relative;
-display: flex;
+    display: flex;
 justify-content: center;
 align-items: center;
 width: 50%;
 height: 100%;
 background-color: blueviolet;
-}
-.destacado .contenedor .img-contenedor::before{
-    content: "SQL";
-    position: absolute;
-    top: 0;
-    left: 24px;
-    color: black;
-    opacity: 0.2;
-    font-size: 4em;
-    font-weight: 800;
-}
-.destacado .contenedor .img-contenedor img{
-    position: relative;
-    width: 460px;
-    transform: rotate(-20deg);
-    left: -px;
-    transition: .9s linear;
-}
-.destacado .contenedor .details{
-    display: flex;
-justify-content: center;
-align-items: center;
-width: 50%;
-height: 100%;
-box-sizing: border-box;
-padding: 40px;
-}
-.destacado .contenedor .details h2{
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-size: 2em;
-    line-height: 1em;
-    color: rgb(93, 42, 165);
-}
-.destacado .contenedor .details h2 span{
-    font-size: 0.4em;
-    text-transform: uppercase;
-letter-spacing: 2px;
-color: aquamarine;
-}
-.destacado .contenedor .details p{
-    max-width: 85%;
-    margin-left: 15%;
-    color:rgb(61, 21, 21);
-    font-size: 15px;
-    margin-bottom: 36px;
-}
-.destacado .contenedor .details h3{
-    margin: 0;
-    padding: 0;
-    font-size: 2.5em;
-    color: brown;
-    float: left;
-}
-.destacado .contenedor .details button{
-    background: black;
-    color: beige;
-    border: none;
-    outline: none;
-    padding: 15px 20px;
-    margin-top: 5px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 600;
-    border-radius: 40px;
-    float: right;
-}
-/*responsive Juego destacado*/
-@media(max-width:1080px){
-    .destacado .contenedor{
-        height: auto;
-    }
-    .destacado .contenedor .img-contenedor{
-        padding:40px;
-        box-sizing: border-box;
-        width: 100% !important;
-        height: auto;
-        text-align: center;
-        overflow: hidden;
-    }
-    .destacado .contenedor .img-contenedor img{
-        left:initial;
-        max-width: 100%;
-        transform: rotate(0deg);
-    }
-    .destacado .contenedor .details{
-        width: 100% !important;
-        height: auto;
-        padding: 20px;
-    }
-}
-
-
-.destacado .contenedor{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 900px;
-    height: 380px;
-    background-color: white;
-    margin: 20px;
-}
-.destacado .contenedor .img-contenedor{
-    position: relative;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 50%;
-height: 100%;
-background-color: #000;
 }
 .destacado .contenedor .img-contenedor::before{
     content: "#1";
@@ -163,54 +51,50 @@ background-color: #000;
 }
 .destacado .contenedor .img-contenedor img{
     position: relative;
-    width: 460px;
+    width: 400px;
     transform: rotate(-20deg);
     left: -px;
     transition: .9s linear;
 }
 .destacado .contenedor .details{
     display: flex;
-justify-content: center;
-align-items: center;
-width: 50%;
-height: 100%;
-box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
 padding: 40px;
+
 }
 .destacado .contenedor .details h2{
     margin: 0;
-    padding: 0;
+    padding: 0 50px 20px 50px;
     text-transform: uppercase;
     font-size: 2em;
     line-height: 1em;
     color: rgb(93, 42, 165);
 }
-.destacado .contenedor .details h2 span{
-    font-size: 0.4em;
-    text-transform: uppercase;
-letter-spacing: 2px;
-color: aquamarine;
-}
+
 .destacado .contenedor .details p{
     max-width: 85%;
     margin-left: 15%;
-    color:rgb(61, 21, 21);
-    font-size: 15px;
+    color:rgb(63, 3, 75);
+    font-size: 1em;
     margin-bottom: 36px;
 }
 .destacado .contenedor .details h3{
     margin: 0;
-    padding: 0;
+    padding: 10px 0px 0px 50px;
     font-size: 2.5em;
-    color: brown;
+    color: rgb(7, 0, 0);
     float: left;
 }
 .destacado .contenedor .details .button{
-    background: black;
-    color: beige;
+    background: #5b00b0;
+    color: rgb(255, 255, 255);
     border: none;
     outline: none;
-    padding: 15px 20px;
+    padding: 15px 70px;
     margin-top: 5px;
     font-size: 16px;
     letter-spacing: 1px;
@@ -220,6 +104,22 @@ color: aquamarine;
     float: right;
     text-decoration: none;
 }
+.destacado .contenedor .details .button:hover{
+    background: #010002;
+    color: #f5f3f7;
+    border: none;
+    outline: none;
+    padding: 15px 60px;
+    margin-top: 10px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 800;
+    border-radius: 80px;
+    float: right;
+    text-decoration: none;
+}
+
 /*responsive Juego destacado*/
 @media(max-width:1080px){
     .destacado .contenedor{
@@ -244,4 +144,25 @@ color: aquamarine;
         padding: 20px;
     }
 }
+
+/*carousel*/
+#carruselImg .carousel-item img {
+    max-height: 70vh;
+    object-fit: cover;
+  }
+  
+  #carousel {
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(6, 0, 8, 0.5);
+    z-index: 1;
+  }
+
 /**/
