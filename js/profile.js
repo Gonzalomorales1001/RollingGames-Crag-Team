@@ -14,12 +14,12 @@ if(session.length<1){
 const userPhoto=document.querySelector('.banner__user__img')
 const banner=document.querySelector('.banner')
 
-let defaultAvatar=new Image()
-defaultAvatar.src='/assets/img/profile-avatar-example.png'
+// let defaultAvatar=new Image()
+// defaultAvatar.src='/assets/img/profile-avatar-example.png'
 
 const loadUserImages=()=>{
     userPhoto.style.backgroundImage=`url(${session.photo})`
-    banner.style.backgroundImage=`url(${session.banner})`
+    banner.style.background=session.banner
 }
 
 const changeUserPhotoModal=new bootstrap.Modal(document.getElementById('changeUserPhotoModal'))
@@ -95,6 +95,28 @@ const deleteAvatar=()=>{
         clearInputs()
         changeUserPhotoModal.hide()
     }
+}
+
+const changeBanner=(value)=>{
+    let users=JSON.parse(localStorage.getItem('users'))
+    let logedUserIndex=users.findIndex(user=>user.id==session.id)
+
+    let getSelectedBGStyles=''
+    if(value==='c'){
+        getSelectedBGStyles=document.querySelector('#b-btn-c').value
+        
+        alert('func encabled () '+getSelectedBGStyles)
+
+        users[logedUserIndex].banner=getSelectedBGStyles
+        session.banner=getSelectedBGStyles
+    }else{
+        getSelectedBGStyles=window.getComputedStyle(document.querySelector(`#b-btn-${value}`)).background
+        users[logedUserIndex].banner=getSelectedBGStyles
+        session.banner=getSelectedBGStyles
+    }
+    localStorage.setItem('users',JSON.stringify(users))
+    localStorage.setItem('session',JSON.stringify(session))
+    loadUserImages()
 }
 
 function clearInputs(event){
