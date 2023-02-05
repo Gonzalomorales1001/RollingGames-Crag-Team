@@ -20,7 +20,7 @@ const initialData=[
         'CSS',
         'https://spillbart.com/wp-content/uploads/2021/02/css-flexbox-froggy.png',
         'https://flexboxfroggy.com/',
-        `https://youtu.be/5cbfEYT1FG4`,
+        `https://www.youtube.com/embed/5cbfEYT1FG4`,
         true,
         ),
     new game(
@@ -30,7 +30,7 @@ const initialData=[
         'JavaScript',
         'https://i.blogs.es/ee8e7a/jsrobot-2017-11-28-17-46-11/450_1000.png',
         'https://lab.reaal.me/jsrobot/',
-        `https://youtu.be/oxh8ap1DjlA`,
+        `https://www.youtube.com/embed/oxh8ap1DjlA`,
         true,
     ),
     new game(
@@ -40,7 +40,7 @@ const initialData=[
         'Python',
         'http://www.pythonchallenge.com/logo.jpg',
         'www.pythonchallenge.com',
-        `https://youtu.be/otBD59s4fpg`,
+        `https://www.youtube.com/embed/otBD59s4fpg`,
         true,
     ),
     new game(
@@ -50,7 +50,7 @@ const initialData=[
         'JavaScript',
         'https://robocode.sourceforge.io/gfx/robocode_logo_tanks.png',
         'https://robocode.sourceforge.io/',
-        `https://youtu.be/8JJqc5-erVM`,
+        `https://www.youtube.com/embed/8JJqc5-erVM`,
         false,
     ),
     new game(
@@ -60,7 +60,7 @@ const initialData=[
         'JavaScript',
         'https://raw.githubusercontent.com/screeps/screeps/HEAD/logo.png',
         'https://screeps.com/',
-        `https://youtu.be/LkXuGcrCZtU`,
+        `https://www.youtube.com/embed/LkXuGcrCZtU`,
         true,
     ),
     new game(
@@ -70,7 +70,7 @@ const initialData=[
         'SQL',
         'https://www.freecodecamp.org/news/content/images/2020/08/The_SQL_Murder_Mystery.jpg',
         'https://mystery.knightlab.com/',
-        `https://youtu.be/jbioR14VQYI`,
+        `https://www.youtube.com/embed/jbioR14VQYI`,
         true,
     ),
     new game(
@@ -80,7 +80,7 @@ const initialData=[
         'CSS',
         'https://i.ytimg.com/vi/BaT22bWcGwU/maxresdefault.jpg',
         'https://flukeout.github.io/',
-        `https://youtu.be/SbYdwj5lito`,
+        `https://www.youtube.com/embed/SbYdwj5lito`,
         false,
     ),
 ]
