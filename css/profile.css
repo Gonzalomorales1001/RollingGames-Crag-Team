@@ -65,6 +65,18 @@
     height: 25vh;
 }
 
+body{
+    background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/619150/3bb00cbe95127f2fe36c85a33cfe69f4e5911234.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .game-article{
     background-color: rgba(100, 100, 100, 0.5);
     backdrop-filter: blur(10px);
@@ -264,6 +276,51 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#favorites-container{
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+#favorites-container .d-flex{min-height: 40vh;}
+
+.game-data section, .game-data article{
+    flex-basis: 50%;
+}
+
+.game-img{
+    background-image: url(https://s3-us-west-2.amazonaws.com/steemhunt/production/steemhunt/2019-02-05/6a0b1843-8.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 3;
+}
+
+.game-card-overlay{
+    background-color: rgba(0, 0, 0, 0.35);
+    cursor:pointer;
+    opacity: 0%;
+}
+
+.game-card-overlay:hover{
+    opacity: 100%;
+    transition: .7s;
+}
+
+.game-info{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.35);
+    flex-grow: 2;
+}
+
+.no-favs{
+    height: 40vh;
+    display: grid;
+    place-items: center;
+    /* background-color: rgba(0, 0, 0, 0.3); */
 }
 
 @media (min-width: 992px) {

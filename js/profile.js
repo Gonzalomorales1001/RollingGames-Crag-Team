@@ -10,10 +10,10 @@ if(session.length<1){
     mainTag.innerHTML=accessDenied
   }
 
-  window.addEventListener("scroll", function(){
+window.addEventListener("scroll", function(){
     var nav = document.querySelector(".navbar");
     nav.classList.toggle("navbar-color",window.scrollY>0)
-    })
+})
 
 //load user images
 const userPhoto=document.querySelector('.banner__user__img')
@@ -126,9 +126,58 @@ function clearInputs(event){
     document.querySelector('#InvalidURL').style.opacity="0%"
 }
 
+let favoritesContainer=document.querySelector('#favorites-container')
+
+const loadFavs = () => {
+    favoritesContainer.innerHTML = "";
+
+    if(session.favorites.length<1){
+        let noFavsMsg=document.createElement('div')
+        noFavsMsg.classList='no-favs'
+        let content=`You don't have any favorites yet :(`
+        noFavsMsg.innerHTML=content
+        favoritesContainer.appendChild(noFavsMsg)
+    }else{
+        session.favorites.forEach((game) => {
+      
+          if(game.published){
+            let favDetail = document.createElement("div");
+            favDetail.className = "game-data d-flex flex-column flex-md-row position-relative";
+            let content = `
+            <a href="/pages/games.html?id=${game.id}" style="background-image:url(${game.img})" class="game-img">
+            <div class="game-card-overlay p-5 w-100 h-100 d-flex align-items-center justify-content-center flex-column-reverse">
+              <h2>${game.title}</h2>
+              <p>${game.category}</p>
+            </div>
+            </a>
+            <article class="game-info d-flex flex-column justify-content-around">
+              <header class="position-relative">
+                <span class="badge rounded-pill text-bg-${game.category.toLowerCase()} mb-5 fs-5" id="featured-badge">${game.category}</span>
+                <span class="text-warning favorite-badge fs-1" id="favorite-button" onclick="toggleFavorite(${game.id})"><i class="bi bi-star${session.favorites.find(fav=>fav.id===game.id)?'-fill':''}" id="favorite-star"></i></span>
+              </header>
+              <main>
+                <h2 class="mb-2">${game.title}</h2>
+                <p>${game.description}</p>
+              </main>
+              <footer class="bg-transparent justify-content-end">
+                <a href="/pages/games.html?id=${game.id}" class="btn btn-outline-light d-block rounded-5">View More...</a>
+              </footer>
+            </article>
+            `;
+            
+            favDetail.innerHTML = content;
+            favoritesContainer.appendChild(favDetail);
+          }
+      
+        });
+    }
+
+  };
+
 //load functions
 if(session){
     loadUserImages()
+    loadFavs()
     let sessionName=session.username.charAt(0).toUpperCase()+session.username.substring(1)
     document.querySelector('#sessionUsername').innerHTML=sessionName
     document.querySelector('#sessionEmail').innerHTML=session.email

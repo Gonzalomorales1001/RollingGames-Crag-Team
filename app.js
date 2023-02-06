@@ -1,5 +1,5 @@
 class game{
-    constructor(id,title,description,category,img,url,video,published=false,favorite=false){
+    constructor(id,title,description,category,img,url,video,published=false){
         this.id=id
         this.title=title
         this.description=description
@@ -8,7 +8,6 @@ class game{
         this.url=url
         this.video=video
         this.published=published
-        this.favorite=favorite
     }
 }
 
@@ -102,7 +101,8 @@ localStorage.setItem('games',JSON.stringify(games))
 
 let featuredGame=JSON.parse(localStorage.getItem('featured'))||initialData[4]
 
-let session=JSON.parse(localStorage.getItem('session'))||[]
+users=JSON.parse(localStorage.getItem('users'))||[]
+let session=JSON.parse(localStorage.getItem('session'))||{favorites:['guest'],}
 
 //admin navbar button
 let admNavBtn=document.querySelector('#admin-nav-item')
@@ -134,7 +134,31 @@ const logOut=()=>localStorage.removeItem('session')
 
 // let favoriteBadge=document.querySelector('#favorite-badge')
 
-const addFavorite=()=>{
-    // favoriteBadge=classList='bi bi-star-fill'
-    user.favorites.push(game)
+const toggleFavorite=(gameId)=>{
+    if(session.favorites[0]==='guest'){return location.replace('/pages/login.html')}
+    
+    // let favoriteStar=document.querySelector('#favorite-star')
+    let logedUserIndex=users.findIndex(user=>user.id===session.id)
+    let selectedGame=games.find(game=>game.id===gameId)
+    
+    let favoriteFound=users[logedUserIndex].favorites.find(fav=>fav.id===selectedGame.id)
+    if(favoriteFound){
+        // favoriteStar.classList='bi bi-star'
+        let selectedGameIndex=users[logedUserIndex].favorites.findIndex(fav=>fav.id===selectedGame.id)
+        users[logedUserIndex].favorites.splice(selectedGameIndex,1)
+        session=users[logedUserIndex]
+    }else{
+        // favoriteStar.classList='bi bi-star-fill'
+        users[logedUserIndex].favorites.push(selectedGame)
+        session=users[logedUserIndex]
+    }
+
+    localStorage.setItem('users',JSON.stringify(users))
+    localStorage.setItem('session',JSON.stringify(users[logedUserIndex]))
+
+    if(window.location.pathname==='/pages/profile.html'){
+        loadFavs()
+    }else{
+        loadGames()
+    }
 }

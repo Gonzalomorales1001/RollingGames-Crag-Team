@@ -2,7 +2,8 @@
 
 let contenedorJuego = document.querySelector("#contenedorJuego");
 //resolver for each inicilización que nos falta el item
-const listarJuegos = () => {
+let logedUserIndex=users.findIndex(user=>user.id===session.id)
+const loadGames = () => {
   contenedorJuego.innerHTML = "";
   games.forEach((game) => {
 
@@ -10,7 +11,7 @@ const listarJuegos = () => {
       let tarjetaJuego = document.createElement("div");
       tarjetaJuego.className = "game-data d-flex flex-column flex-md-row position-relative";
       let tarjeta = `
-      <a href="/pages/games.html?id=${game.id}" id="game-img" style="background-image:url(${game.img})" class="game-img">
+      <a href="/pages/games.html?id=${game.id}" style="background-image:url(${game.img})" class="game-img">
       <div class="game-card-overlay p-5 w-100 h-100 d-flex align-items-center justify-content-center flex-column-reverse">
         <h2>${game.title}</h2>
         <p>${game.category}</p>
@@ -19,14 +20,14 @@ const listarJuegos = () => {
       <article class="game-info d-flex flex-column justify-content-around">
         <header class="position-relative">
           <span class="badge rounded-pill text-bg-${game.category.toLowerCase()} mb-5 fs-5" id="featured-badge">${game.category}</span>
-          <span class="badge rounded-pill text-bg-warning favorite-badge" id="favorite-button"><i class="bi bi-star${session.favorite?'-fill':''}"></i> Favorite</span>
+          <span class="text-warning favorite-badge fs-1" id="favorite-button" onclick="toggleFavorite(${game.id})"><i class="bi bi-star${session.favorites.find(fav=>fav.id===game.id)?'-fill':''}" id="favorite-star"></i></span>
         </header>
         <main>
           <h2 class="mb-2">${game.title}</h2>
           <p>${game.description}</p>
         </main>
         <footer class="bg-transparent justify-content-end">
-          <a href="/pages/games.html?id=${game.id}" class="btn btn-outline-light d-block">View More...</a>
+          <a href="/pages/games.html?id=${game.id}" class="btn btn-outline-light d-block rounded-5">View More...</a>
         </footer>
       </article>
       `;
@@ -100,4 +101,4 @@ const loadFeaturedGame=()=>{
 }
 
 loadFeaturedGame()
-listarJuegos()
+loadGames()
