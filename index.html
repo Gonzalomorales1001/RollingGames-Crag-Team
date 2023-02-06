@@ -54,24 +54,24 @@
     </nav>
   </header>
     <main class="background">
-      
-     <!--espacio para navbar-->
-      <div class="espacio"></div>
-      <!--Fin de espacio para navbar-->
-
       <!--Juego Destacado-->
       <section class="destacado">
         <div class="contenedor">
           <div class="img-contenedor">
-          <img id="featured-image"  alt="Featured Game Image">
+            <div class="featured-image-container">
+              <img id="featured-image"  alt="Featured Game Image">
+            </div>
           </div>
           <div class="details">
+            <span class="badge rounded-pill text-bg-c mb-5" id="featured-badge">
+              C#
+            </span>
             <div class="content">
-              <h2>Featured Game</h2>
-              <h3 id="featured-title"></h3> <br> <br> <br>
+              <h2 id="featured-card-title" class="">Featured Game</h2>
+              <h3 id="featured-title" class="text-end"></h3> <br> <br> <br>
               <br>
               <p id="featured-desc"></p>
-              <a href="" id="featured-view-more" class="button">Read More</a>
+              <a href="" id="featured-view-more" class="button fs-5">Read More</a>
             </div>
           </div>
           </div>
@@ -84,10 +84,52 @@
         <p>The best page to play and learn software development</p>
       </section>
       <!--Fin  texto-->
-
-      <!--Card de los juegos-->
-      <div class="container mt-5" id="contenedorJuego">
+      <div class="pick-category">
+        <h3>Check our games!</h3>
+        <small>Select Category</small>
+        <select class="form-select rounded" id="filter-category" aria-label="Default select example" required>
+          <option value="All Categories" selected>Other</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Java">Java</option>
+          <option value="C">C</option>
+          <option value="C++">C++</option>
+          <option value="C#">C#</option>
+          <option value="Python">Python</option>
+          <option value="SQL">SQL</option>
+          <option value="Assembly">Assembly</option>
+          <option value="Kotlin">Kotlin</option>
+          <option value="Framework">Frameworks</option>
+          <option value="Others">Other</option>
+        </select>
       </div>
+      <!--Card de los juegos-->
+      <section class="mt-3" id="contenedorJuego">
+
+        <!-- <div class="game-data d-flex flex-column flex-md-row my-4 position-relative">
+          <a href="" id="game-img" class="game-img">
+            <div class="game-card-overlay p-5 w-100 h-100 d-flex align-items-center justify-content-center flex-column-reverse">
+              <h2>game.title</h2>
+              <small>Game: game.category</small>
+            </div>
+            </a>
+            <article class="game-info d-flex flex-column justify-content-around">
+              <header class="position-relative">
+                <span class="badge rounded-pill text-bg-c mb-5 fs-5" id="featured-badge">C#</span>
+                <span class="badge rounded-pill text-bg-warning favorite-badge" id="favorite-button"><i class="bi bi-star"></i> Favorite</span>
+              </header>
+              <main>
+                <h2 class="mb-2">Game.Title</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis rem nostrum numquam aliquid eligendi perferendis quis asperiores vero omnis dolorum.</p>
+              </main>
+              <footer class="bg-transparent justify-content-end">
+                <button class="btn btn-warning d-block">View More...</button>
+              </footer>
+            </article>
+            </div> -->
+
+      </section>
       <!--Fin de Card de los juegos-->
 
     <!--carrusel-->
@@ -120,7 +162,7 @@
              alt="imagen 3"
            />
          </div>
-         <div class="overlaycarousel">
+         <div class="overlaycarrusel">
            <div class="container h-100">
              <div class="row h-100 align-items-center">
              </div>
@@ -132,7 +174,7 @@
        <!--carrusel-->
 
   </main>
-    <footer class="pt-5">
+    <footer class="pt-5 footer">
       <h4>Check our social networks!</h4>
       <div class="social-icons-container">
           <a href="/pages/404.html" class="social-icon"></a>
