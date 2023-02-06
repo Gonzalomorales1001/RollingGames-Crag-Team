@@ -87,7 +87,7 @@
       <div class="pick-category">
         <h3>Check our games!</h3>
         <small>Select Category</small>
-        <select class="form-select rounded" id="filter-category" aria-label="Default select example" required>
+        <select class="form-select rounded" id="filter-category" aria-label="Default select example" required onchange="loadGames(document.querySelector('#filter-category').value)">
           <option value="All Categories" selected>All Categories</option>
           <option value="HTML">HTML</option>
           <option value="CSS">CSS</option>

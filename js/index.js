@@ -3,10 +3,11 @@
 let contenedorJuego = document.querySelector("#contenedorJuego");
 //resolver for each inicilización que nos falta el item
 let logedUserIndex=users.findIndex(user=>user.id===session.id)
-const loadGames = () => {
+const loadGames = (filter) => {
   contenedorJuego.innerHTML = "";
+  
+  if(!filter||filter!='All Categories'){games=games.filter(game=>game.category===filter)}
   games.forEach((game) => {
-
     if(game.published){
       let tarjetaJuego = document.createElement("div");
       tarjetaJuego.className = "game-data d-flex flex-column flex-md-row position-relative";
@@ -36,7 +37,9 @@ const loadGames = () => {
       contenedorJuego.appendChild(tarjetaJuego);
     }
 
-  });
+  })
+  
+  games=JSON.parse(localStorage.getItem('games'))||initialData
 };
 //marcar juego favorito
 //load featured game data
@@ -101,4 +104,4 @@ const loadFeaturedGame=()=>{
 }
 
 loadFeaturedGame()
-loadGames()
+loadGames('All Categories')

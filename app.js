@@ -159,6 +159,6 @@ const toggleFavorite=(gameId)=>{
     if(window.location.pathname==='/pages/profile.html'){
         loadFavs()
     }else{
-        loadGames()
+        loadGames(document.querySelector('#filter-category').value)
     }
 }
