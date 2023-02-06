@@ -11,6 +11,15 @@ if(!session.admin){
   mainTag.innerHTML=accessDenied
 }
 
+function validateURL(urlImage){
+  try {
+      new URL(urlImage)
+      return true
+  } catch (err) {
+      return false
+  }
+}
+
 const editGameModal = new bootstrap.Modal(document.getElementById('editGameModal'))
 
 //games table
@@ -33,7 +42,7 @@ const loadTable=()=>{
         </div>
     </td>
     <td class="text-center fs-3"><i class="bi bi-pencil-square" onclick="showEditGameModal(${game.id})"></i></td>
-    <td class="text-center fs-3"><i class="text-danger mx-1 bi bi-trash-fill" onclick="deleteGame(${game.id})"></i></td>
+    <td class="text-center fs-3">${game.id==featuredGame.id?'':`<i class="text-danger mx-1 bi bi-trash-fill" onclick="deleteGame(${game.id})"></i>`}</td>
     `
     tr.innerHTML=content
     gameTableBody.appendChild(tr)
@@ -144,6 +153,7 @@ const editGame=(event)=>{
   let descInput=document.querySelector('#game-description__edit-modal')
   let categorySelect=document.querySelector('#game-category__edit-modal')
   let urlImageInput=document.querySelector('#game-imageURL__edit-modal')
+
 
   games[index].title=nameInput.value
   games[index].description=descInput.value

@@ -16,7 +16,7 @@
 </head>
 <body>
     <header class="position-fixed">
-        <nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark">
+        <nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark navbar-color">
           <div class="container">
             <a class="navbar-brand d-flex align-items-center flex-column" href="/index.html">
               <div class="dewbie-logo">
@@ -65,14 +65,15 @@
             </div>
             <!-- <img src="/assets/img/profile-avatar-example.png" class="" alt="profile img"> -->
             <div class="mt-2">
-              <h3>session.username</h3>
-              <p>session.email</p>
+              <h3 id="sessionUsername">session.username</h3>
+              <p id="sessionEmail">session.email</p>
             </div>
           </div>
         </section>
         <section class="d-flex justify-content-center align-items-center title">
-          <h1 class="text-center d-none d-lg-block mb-5">session.username profile</h1>
+          <h1 id="sessionUsernameProfile" class="text-center d-none d-lg-block mb-5">session.username profile</h1>
         </section>
+        <h2 class="m-3">My favorite games</h2>
         <section class="container-fluid">
           <div class="game-article row row-cols-1 row-cols-md-2">
             <div class="col p-0">
@@ -89,7 +90,7 @@
           </div>
         </section>
       </main>
-        <footer class="pt-5">
+        <footer class="pt-5 footer">
           <h4>Check our social networks!</h4>
           <div class="social-icons-container">
               <a href="/pages/404.html" class="social-icon"></a>
@@ -145,52 +146,52 @@
       <div class="modal-body px-2">
         <h5 class="">Solid Colors</h5><hr>
         <div class="d-flex flex-wrap gap-4 align-items-center justify-content-center mb-4">
-          <div class="banner-btn" id="b-btn-1"></div>
-          <div class="banner-btn" id="b-btn-2"></div>
-          <div class="banner-btn" id="b-btn-3"></div>
-          <div class="banner-btn" id="b-btn-4"></div>
-          <div class="banner-btn" id="b-btn-5"></div>
-          <div class="banner-btn" id="b-btn-6"></div>
-          <div class="banner-btn" id="b-btn-7"></div>
-          <div class="banner-btn" id="b-btn-8"></div>
-          <div class="banner-btn" id="b-btn-9"></div>
-          <div class="banner-btn-c fs-1 d-flex justify-content-center align-items-center" id="b-btn-c"><input type="color" name="custom-banner-color" id="custom-banner-color" value="#999999"></div>
+          <div class="banner-btn" id="b-btn-1" onclick="changeBanner(1)"></div>
+          <div class="banner-btn" id="b-btn-2" onclick="changeBanner(2)"></div>
+          <div class="banner-btn" id="b-btn-3" onclick="changeBanner(3)"></div>
+          <div class="banner-btn" id="b-btn-4" onclick="changeBanner(4)"></div>
+          <div class="banner-btn" id="b-btn-5" onclick="changeBanner(5)"></div>
+          <div class="banner-btn" id="b-btn-6" onclick="changeBanner(6)"></div>
+          <div class="banner-btn" id="b-btn-7" onclick="changeBanner(7)"></div>
+          <div class="banner-btn" id="b-btn-8" onclick="changeBanner(8)"></div>
+          <div class="banner-btn" id="b-btn-9" onclick="changeBanner(9)"></div>
+          <!-- <div class="banner-btn-c fs-1 d-flex justify-content-center align-items-center" id="b-btn-c"><input type="color" name="customcolor" id="custom-banner-color" value="#999999" oninput="changeBanner('c')"></div> -->
           <!-- <input type="color" name="custom-banner-color" id="custom-banner-color b-btn-c" class="banner-btn-c fs-1 d-flex justify-content-center align-items-center"> -->
         </div>
         <h5 class="">Gradient Banners</h5><hr>
         <div class="d-flex flex-wrap gap-4 align-items center justify-content-center mb-4">
-          <div class="banner-btn" id="b-btn-10"></div>
-          <div class="banner-btn" id="b-btn-11"></div>
-          <div class="banner-btn" id="b-btn-12"></div>
-          <div class="banner-btn" id="b-btn-13"></div>
-          <div class="banner-btn" id="b-btn-14"></div>
-          <div class="banner-btn" id="b-btn-15"></div>
-          <div class="banner-btn" id="b-btn-16"></div>
-          <div class="banner-btn" id="b-btn-17"></div>
-          <div class="banner-btn" id="b-btn-18"></div>
-          <div class="banner-btn" id="b-btn-19"></div>
-          <div class="banner-btn" id="b-btn-20"></div>
-          <div class="banner-btn" id="b-btn-21"></div>
-          <div class="banner-btn" id="b-btn-22"></div>
-          <div class="banner-btn" id="b-btn-23"></div>
+          <div class="banner-btn" id="b-btn-10" onclick="changeBanner(10)"></div>
+          <div class="banner-btn" id="b-btn-11" onclick="changeBanner(11)"></div>
+          <div class="banner-btn" id="b-btn-12" onclick="changeBanner(12)"></div>
+          <div class="banner-btn" id="b-btn-13" onclick="changeBanner(13)"></div>
+          <div class="banner-btn" id="b-btn-14" onclick="changeBanner(14)"></div>
+          <div class="banner-btn" id="b-btn-15" onclick="changeBanner(15)"></div>
+          <div class="banner-btn" id="b-btn-16" onclick="changeBanner(16)"></div>
+          <div class="banner-btn" id="b-btn-17" onclick="changeBanner(17)"></div>
+          <div class="banner-btn" id="b-btn-18" onclick="changeBanner(18)"></div>
+          <div class="banner-btn" id="b-btn-19" onclick="changeBanner(19)"></div>
+          <div class="banner-btn" id="b-btn-20" onclick="changeBanner(20)"></div>
+          <div class="banner-btn" id="b-btn-21" onclick="changeBanner(21)"></div>
+          <div class="banner-btn" id="b-btn-22" onclick="changeBanner(22)"></div>
+          <div class="banner-btn" id="b-btn-23" onclick="changeBanner(23)"></div>
         </div>
         <h5 class="">Custom Banners</h5><hr>
         <div class="d-flex flex-wrap gap-4 align-items center justify-content-center mb-4">
-          <div class="banner-btn custom-banner-img" id="b-btn-24"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-25"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-26"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-27"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-28"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-29"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-30"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-31"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-32"></div>
-          <div class="banner-btn custom-banner-img" id="b-btn-33"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-24" onclick="changeBanner(24)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-25" onclick="changeBanner(25)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-26" onclick="changeBanner(26)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-27" onclick="changeBanner(27)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-28" onclick="changeBanner(28)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-29" onclick="changeBanner(29)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-30" onclick="changeBanner(30)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-31" onclick="changeBanner(31)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-32" onclick="changeBanner(32)"></div>
+          <div class="banner-btn custom-banner-img" id="b-btn-33" onclick="changeBanner(33)"></div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="">Close</button>
-        <button type="button" class="btn btn-dewbieviolet" onclick="">Save changes</button>
+        <!-- <button type="button" class="btn btn-dewbieviolet" onclick="">Save changes</button> -->
       </div>
     </div>
   </div>

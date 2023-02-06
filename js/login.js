@@ -87,9 +87,9 @@ let confirmPassword=document.querySelector('#confirm-password')
 let forgotPassword=document.querySelector('#forgot-password-input')
 
 let defaultAvatar=new Image()
-let defaultBanner=new Image()
+let defaultBanner='var(--DewbieViolet)'
 defaultAvatar.src='/assets/img/profile-avatar-example.png'
-defaultBanner.src='/assets/img/profile-banner.jpg'
+// defaultBanner.src='/assets/img/profile-banner.jpg'
 class user{
     constructor(username,password,email,id,admin=false,photo=defaultAvatar,banner=defaultBanner,favorites=[]){
         this.username=username
@@ -98,7 +98,7 @@ class user{
         this.id=id
         this.admin=admin
         this.photo=photo.src
-        this.banner=banner.src
+        this.banner=banner
         this.favorites=favorites
     }
 }

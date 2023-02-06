@@ -18,7 +18,7 @@ const initialData=[
         'FlexBox Froggy',
         'a game where you help Froggy and friends by writing CSS code!',
         'CSS',
-        'https://spillbart.com/wp-content/uploads/2021/02/css-flexbox-froggy.png',
+        'https://s3-us-west-2.amazonaws.com/steemhunt/production/steemhunt/2019-02-05/6a0b1843-8.png',
         'https://flexboxfroggy.com/',
         `https://www.youtube.com/embed/5cbfEYT1FG4`,
         true,

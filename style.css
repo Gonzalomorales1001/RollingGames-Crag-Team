@@ -174,7 +174,7 @@ header{
 }
 
 /*Footer*/
-footer{
+.footer{
     width: 100%;
     background-color: var(--DewbieVioletDark);
     display: flex;

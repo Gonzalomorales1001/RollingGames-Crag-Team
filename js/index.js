@@ -100,4 +100,5 @@ const loadFeaturedGame=()=>{
 }
 
 loadFeaturedGame()
-listarJuegos()
+listarJuegos();
+
