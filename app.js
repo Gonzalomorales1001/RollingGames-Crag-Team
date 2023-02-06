@@ -82,6 +82,16 @@ const initialData=[
         `https://youtu.be/SbYdwj5lito`,
         false,
     ),
+    new game(
+        7,
+        'CheckIO',
+        `Teachers all over the world use CheckiO as an extra-tool during their courses so that students could practice their skills when learning new material.`,
+        'Python',
+        'https://d2l28oe7yi95h7.cloudfront.net/img/share.jpg',
+        'https://py.checkio.org/',
+        `https://www.youtube.com/embed/IB1YnywBIaU`,
+        true,
+    ),
 ]
 
 let color={
@@ -143,12 +153,10 @@ const toggleFavorite=(gameId)=>{
     
     let favoriteFound=users[logedUserIndex].favorites.find(fav=>fav.id===selectedGame.id)
     if(favoriteFound){
-        // favoriteStar.classList='bi bi-star'
         let selectedGameIndex=users[logedUserIndex].favorites.findIndex(fav=>fav.id===selectedGame.id)
         users[logedUserIndex].favorites.splice(selectedGameIndex,1)
         session=users[logedUserIndex]
     }else{
-        // favoriteStar.classList='bi bi-star-fill'
         users[logedUserIndex].favorites.push(selectedGame)
         session=users[logedUserIndex]
     }

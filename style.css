@@ -46,9 +46,14 @@
     --bs-gradient: none;
 }
 
+.text-bg-default{
+    color: #FFF;
+    background: linear-gradient(120deg, rgba(91,0,176,1) 53%, rgba(0,0,0,1) 100%)
+}
+
 .text-bg-html{
     color: #FFF!important;
-    background-color: #ff5100 !important;
+    background: #ff5100 !important;
 }
 
 .text-bg-css{
@@ -73,17 +78,17 @@
 
 .text-bg-java{
     color: #ff5100!important;
-    background-color: RGBA(255,255,255,var(--bs-bg-opacity,1)) !important;
+    background: #fff !important;
 }
 
-.text-bg-c{
+.text-bg-c {
     color: #ffffff!important;
-    background-color: RGBA(120,0,255,var(--bs-bg-opacity,1)) !important;
+    background: radial-gradient(circle, rgba(81,0,255,1) 0%, rgba(132,0,255,1) 20%) !important;
 }
 
 .text-bg-others{
     color: #ffffff!important;
-    background-color: #444 !important;
+    background: #444 !important;
 }
 
 .favorite-badge{

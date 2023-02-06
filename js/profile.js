@@ -139,7 +139,6 @@ const loadFavs = () => {
         favoritesContainer.appendChild(noFavsMsg)
     }else{
         session.favorites.forEach((game) => {
-      
           if(game.published){
             let favDetail = document.createElement("div");
             favDetail.className = "game-data d-flex flex-column flex-md-row position-relative";
@@ -152,7 +151,7 @@ const loadFavs = () => {
             </a>
             <article class="game-info d-flex flex-column justify-content-around">
               <header class="position-relative">
-                <span class="badge rounded-pill text-bg-${game.category.toLowerCase()} mb-5 fs-5" id="featured-badge">${game.category}</span>
+                <span class="badge rounded-pill text-bg-default text-bg-${game.category.toLowerCase()} mb-5 fs-5" id="featured-badge">${game.category}</span>
                 <span class="text-warning favorite-badge fs-1" id="favorite-button" onclick="toggleFavorite(${game.id})"><i class="bi bi-star${session.favorites.find(fav=>fav.id===game.id)?'-fill':''}" id="favorite-star"></i></span>
               </header>
               <main>
@@ -168,6 +167,7 @@ const loadFavs = () => {
             favDetail.innerHTML = content;
             favoritesContainer.appendChild(favDetail);
           }
+
       
         });
     }

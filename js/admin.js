@@ -35,7 +35,7 @@ const loadTable=()=>{
     <th scope="row" class="d-none d-md-table-cell text-center">${game.id}</th>
     <th scope="row">${game.title}</th>
     <td class="text-justify d-none d-md-table-cell">${game.description}</td>
-    <td class="d-none d-lg-table-cell">${game.category}</td>
+    <td class="d-none d-lg-table-cell"><span class="badge rounded-pill text-bg-default text-bg-${game.category.toLowerCase()}">${game.category}</span></td>
     <td class="text-center fs-4">
         <div class="form-check form-switch d-flex justify-content-center align-items-center">
         <input class="form-check-input" type="checkbox" role="switch" ${game.published?'checked':''} ${game.id==featuredGame.id?'disabled':''} onchange="publish(${game.id})">
@@ -60,6 +60,11 @@ const publish=(id)=>{
   }
   foundGame.published= !foundGame.published
   games[foundGameIndex]=foundGame
+
+  // let userContainsFavIndex=users.findIndex(user=>user.favorites.find(fav=>fav.id===foundGame.id).id===foundGame.id)
+  // let favGameIndex=users[userContainsFavIndex].favorites.find()
+  // users[userContainsFavIndex].favorites[favGameIndex]=foundGame
+
   loadFeatureOptions()
   selectFeatured()
   saveGamesInLS()
@@ -89,28 +94,33 @@ const addNewGame=(event)=>{
   let urlImageInput=document.querySelector('#game-imageURL')
   let urlVideoInput=document.querySelector('#video-url')
 
-  let newGame=new game(
-    new Date().getTime(),
-    nameInput.value,
-    descInput.value,
-    categorySelect.value,
-    urlImageInput.value,
-    urlInput.value,
-    urlVideoInput.value,
-    )
+  if(validateURL(urlImageInput.value) && validateURL(urlInput.value) && validateURL(urlVideoInput.value)){
+    let newGame=new game(
+      new Date().getTime(),
+      nameInput.value,
+      descInput.value,
+      categorySelect.value,
+      urlImageInput.value,
+      urlInput.value,
+      urlVideoInput.value,
+      )
+  
+    games.push(newGame)
+    loadFeatureOptions()
+    selectFeatured()
+    saveGamesInLS()
+    loadTable()
+  
+    nameInput.value=''
+    descInput.value=''
+    categorySelect.value='Others'
+    urlImageInput.value=''
+    urlInput.value=''
+    urlVideoInput.value=''
+  }else{
+    alert('Invalid URL')
+  }
 
-  games.push(newGame)
-  loadFeatureOptions()
-  selectFeatured()
-  saveGamesInLS()
-  loadTable()
-
-  nameInput.value=''
-  descInput.value=''
-  categorySelect.value=''
-  urlImageInput.value=''
-  urlInput.value=''
-  urlVideoInput.value=''
 }
 
 let gameData=null
