@@ -34,7 +34,7 @@ if(game){
   </div>
   <article class="col">
     <header>
-      <span class="badge rounded-pill text-bg-c mt-3" id="game-category">
+      <span class="badge rounded-pill text-bg-${game.category.toLowerCase()} mt-3" id="game-category">
         ${game.category}
       </span>
       <h1 class="text-center" id="game-title">${game.title}</h1>
