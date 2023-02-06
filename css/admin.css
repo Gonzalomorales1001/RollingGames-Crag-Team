@@ -1,5 +1,6 @@
 body{
-    background-image: url(/assets/img/admin-wallpaper.jpg);
+    /* background-image: url(/assets/img/admin-wallpaper.jpg); */
+    background-color:#222;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
