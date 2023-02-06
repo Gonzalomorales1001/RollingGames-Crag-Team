@@ -37,7 +37,7 @@ const initialData=[
         'Python Challenge',
         'The most entertaining way to explore Python. Every puzzle can be solved by a bit of (python) programming.',
         'Python',
-        'https://www.pythonchallenge.com/logo.jpg',
+        'https://www.azulweb.net/wp-content/uploads/2020/08/python_challenge.png',
         'https://www.pythonchallenge.com',
         `https://www.youtube.com/embed/otBD59s4fpg`,
         true,
